@@ -1,10 +1,10 @@
 var OnClick = {
-	install: function(objName) {
+    install: function (objName) {
         var target = window[objName];
 
-		// extend functionality into the target
-		$.extend(target, {
-            onClick: function(e) {
+        // extend functionality into the target
+        $.extend(target, {
+            onClick: function (e) {
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -16,15 +16,15 @@ var OnClick = {
                     console.info("Aborting. Could not find method " + method + "().");
                 }
             }
-		});
+        });
 
         // define the selector
         var selector = "[data-" + objName + "]";
 
         // enable the click listener
-        site.addListener("click", selector, target.onClick);
+        $("body").on("click", selector, target.onClick);
 
         // add cursor
         $(selector).css("cursor", "pointer");
-	},
+    },
 }
