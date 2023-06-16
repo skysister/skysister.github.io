@@ -1,0 +1,84 @@
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 300;
+	src: url("opensans-light.woff2") format("woff2"),
+		 url("opensans-light.woff") format("woff");
+}
+@font-face {
+ 	font-display: fallback;
+ 	font-family: "OpenSans";
+	font-style: italic;
+	font-weight: 300;
+	src: url("opensans-lightitalic.woff2") format("woff2"),
+		 url("opensans-lightitalic.woff") format("woff");
+}
+
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 400;
+	src: url("opensans-regular.woff2") format("woff2"),
+		 url("opensans-regular.woff") format("woff");
+}
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: italic;
+	font-weight: 400;
+	src: url("opensans-italic.woff2") format("woff2"),
+		 url("opensans-italic.woff") format("woff");
+}
+
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 600;
+	src: url("opensans-semibold.woff2") format("woff2"),
+		 url("opensans-semibold.woff") format("woff");
+}
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: italic;
+	font-weight: 600;
+	src: url("opensans-semibolditalic.woff2") format("woff2"),
+		 url("opensans-semibolditalic.woff") format("woff");
+}
+
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 700;
+	src: url("opensans-bold.woff2") format("woff2"),
+		 url("opensans-bold.woff") format("woff");
+}
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: italic;
+	font-weight: 700;
+	src: url("opensans-bolditalic.woff2") format("woff2"),
+		 url("opensans-bolditalic.woff") format("woff");
+}
+
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 800;
+	src: url("opensans-extrabold.woff2") format("woff2"),
+		 url("opensans-extrabold.woff") format("woff");
+}
+@font-face {
+	font-display: fallback;
+	font-family: "OpenSans";
+	font-style: italic;
+	font-weight: 800;
+	src: url("opensans-extrabolditalic.woff2") format("woff2"),
+		 url("opensans-extrabolditalic.woff") format("woff");
+}
