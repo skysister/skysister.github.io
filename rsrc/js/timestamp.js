@@ -1,19 +1,7 @@
 var timestamp = {
     onDocumentReady: function () {
         console.log("timestamp.onDocumentReady()");
-        $("body").on("click", "[data-timestamp]", timestamp.onClick);
-    },
-
-    onClick: function () {
-        var target = $(this);
-        var action = target.data("timestamp");
-
-        if (typeof timestamp[action] != "function") {
-            console.error("Could not find method named " + action + ". Aborting.");
-            return;
-        }
-
-        timestamp[action].call(this);
+        OnClick.install("site"); // attaches click handlers
     },
 
     convertFromEve: function () {
