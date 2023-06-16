@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <title>Time :: Sky Sister</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/rsrc/font/opensans/v1.10/fontface.css">
+    <link rel="stylesheet" href="/rsrc/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <script src="/rsrc/js/timestamp.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="container">
+            <h1>Time Stamp</h1>
+            <p>Also handy: <a href="http://hammertime.cyou" target="_blank">Hammer Time</a></p>
+            <p>Enter a date time below.</p>
+            <p>Input time without an offset uses your current time zone.</p>
+            <div class="form-inline">
+                <input class="form-control" id="input">
+                &nbsp;
+                <button class="btn btn-primary btn-hmc-b" data-timestamp="convert">Convert</button>
+            </div>
+            <hr>
+            <div class="form-inline">
+                <input class="form-control" id="output">
+                &nbsp;
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-hmc-b dropdown-toggle" data-toggle="dropdown" xdata-timestamp="discord">
+                        Copy for Discord
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" data-timestamp="discord"><code>:t</code> | Short time: 9:18 AM</a>
+                        <a class="dropdown-item" data-timestamp="discord"><code>:T</code> | Long time: 9:18:34 AM</a>
+                        <a class="dropdown-item" data-timestamp="discord"><code>:d</code> | Short date: 12/11/2022</a>
+                        <a class="dropdown-item" data-timestamp="discord"><code>:D</code> | Long date: December 11, 2022</a>
+                        <a class="dropdown-item" data-timestamp="discord"><code>:f</code> | Short date & time: December 11, 2022 9:18 AM</a>
+                        <a class="dropdown-item" data-timestamp="discord"><code>:F</code> | Long date & time: Sunday, December 11, 2022 9:18 AM</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" data-timestamp="discord"><code>:R</code> | Relative time: 5 minutes ago</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p>Copy the timer text from the Eve client and paste it here.</p>
+            <div class="row">
+                <div class="form col-md-6">
+                    <textarea class="form-control" id="eveInput" rows="3"></textarea><br>
+                    <button class="btn btn-primary btn-hmc-b" data-timestamp="convertFromEve">Convert Timer from Eve</button>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid" src="/rsrc/img/copy-timer.png">
+                </div>
+            </div>
+            <hr>
+            <p>Convert bulk times (Name YYYY.MM.DD HH:mm), one per line:</p>
+            <div class="row">
+                <div class="form col-md-6">
+                    <textarea class="form-control" id="eveBulkInput" rows="3"></textarea><br>
+                    <button class="btn btn-primary btn-hmc-b" data-timestamp="convertEveBulk">Convert in Bulk</button>
+                </div>
+            </div>
+            <hr>
+            <p>Improvements:
+                <ul>
+                    <li>Add a date time picker</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
