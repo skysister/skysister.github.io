@@ -1,7 +1,7 @@
 var timestamp = {
     onDocumentReady: function () {
         console.log("timestamp.onDocumentReady()");
-        OnClick.install("site"); // attaches click handlers
+        OnClick.install("timestamp"); // attaches click handlers
     },
 
     convertFromEve: function () {
