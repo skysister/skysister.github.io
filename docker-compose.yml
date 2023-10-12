@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  website:
+    container_name: ss-skysister-github
+    environment:
+      VIRTUAL_HOST: ss-skysister-github.localhost
+    image: markpriddy/base-a
+    networks:
+      - mplocal
+    platform: linux/x86_64
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./docs:/var/www/html
+      - ./nginx-cache.conf:/etc/nginx/conf.d/nginx-cache.conf
+
+networks:
+  mplocal:
+    external: true
