@@ -1,0 +1,24 @@
+Deposit Record
+
+Each record represents a deposit into the pool.
+It has fields:
+- oreType: specific type of ore deposited
+- characterName: name of character who deposited
+- quantity: how much ore deposited
+- estimatedIsk: estimated ISK value given by Eve
+- dateTime: date and time of deposit
+
+Write Custom Parser
+Should be able to populate
+- oreType
+- quantity
+- estimatedIsk
+And generate
+- dateTime
+Leaving the operator to enter
+- characterName
+
+Parser Data Source
+- inventory copy
+- mining ledger copy
+- mining ledger copy via chat
