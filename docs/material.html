@@ -1,0 +1,18 @@
+<?php
+
+site()->layoutInit();
+site()->load("Site\Material", "Material")
+
+?>
+
+<div class="page">
+	<div class="container">
+        <h1>Eve Material Analysis</h1>
+        <?=site()->Material->handleForm()?>
+    </div>
+</div>
+
+<?=site()->loadTemplate("site/footer-js")?>
+<?=site()->bustJS("/js/material.js")?>
+
+<?=site()->layout()?>
