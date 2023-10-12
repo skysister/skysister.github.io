@@ -1,0 +1,6 @@
+Repo Time
+√ get Sourcetree working with Github on both computers
+√ clone the skysister repo
+√ relocate active code to /docs folder
+√ PR and merge from both computers
+- spin up local Docker container?

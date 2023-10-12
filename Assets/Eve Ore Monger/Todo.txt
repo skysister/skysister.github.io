@@ -2,12 +2,6 @@ Eve Ore Monger
 skysister-eve-oremon
 https://console.firebase.google.com
 
-Repo Time
-- get Sourcetree working with Github on both computers
-- clone the skysister repo
-√ relocate active code to /docs folder
-- spin up local Docker container?
-
 React
 - figure out where to create the react project
 - create it
