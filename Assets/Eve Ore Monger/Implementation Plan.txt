@@ -1,0 +1,45 @@
+Implementation Plan
+
+Alpha 0.1: MVP Minimum Viable Product
+√ create repo on GitHub
+√ host on https://skysister.github.io
+- commit from two computers
+Features
+- record ore deposits
+- basic UI
+Self Contained
+- save and read data from local storage
+- import and export JSON
+
+Beta 0.5
+Features
+- authentication
+- multiple user
+External Data
+- save and read data from Firebase
+- import and export JSON
+
+Release 1.0
+Promote to release when
+- product has been used for two cycles without bugs
+
+Release 1.1
+Features
+- rebuild in React
+
+Release 1.2
+Features
+- inventory copy parser
+- inventory copy via chat parser
+- mining ledger parser
+- mining ledge via chat parser
+
+Release 1.3
+Features
+- track withdrawals
+
+Release 2.0
+Features
+- can handle multiple pools
+- owner, admin, edit and read user types
+- monetize

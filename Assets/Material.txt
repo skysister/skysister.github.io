@@ -1,0 +1,31 @@
+Veldspar
+Dense Veldspar
+Stable Veldspar
+Concentrated Veldspar
+
+{
+	"name": "Veldspar",
+	"yield": 1,
+	"location": "High Security",
+	"volume": 0.1
+},
+{
+	"name": "Concentrated Veldspar",
+	"yield": 1.05,
+	"location": "High Security",
+	"volume": 0.1
+},
+{
+	"name": "Dense Veldspar",
+	"yield": 1.1,
+	"location": "High Security",
+	"volume": 0.1
+},
+{
+	"name": "Stable Veldspar",
+	"yield": 1.15,
+	"location": "High Security",
+	"volume": 0.1
+}
+
+https://wiki.eveuniversity.org/Asteroids_and_ore
