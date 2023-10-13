@@ -5,7 +5,7 @@ var material = {
         $("body").on("change", "[data-materialonchange]", material.onChange);
     },
 
-    onConvert: function () {
+    onAnalyze: function () {
         var input = $("#materialInput").val();
         console.log(input);
 
