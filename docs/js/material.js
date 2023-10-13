@@ -52,12 +52,11 @@ var material = {
         // split the line by tabs
         line = line.split("\t");
 
-        // if there's no keys, return the split line array as is
-        if (keys == null) {
-            return line;
+        if (keys != null) {
+            line = line.map((value, l) => ({ [keys[l]]: value }));
         }
 
-        return line.map((value, l) => ({ [keys[l]]: value }));
+        return line;
     },
 
     calculate: function (sections) {
