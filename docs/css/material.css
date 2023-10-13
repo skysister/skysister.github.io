@@ -1,0 +1,7 @@
+.table-material td, .table-material th { padding-left: 1em; padding-right: 1em; }
+.table-material td:first-child { padding-left: 2em; }
+.table-material .item-least-runs td { background: rgba(255, 127, 0, 0.2); }
+.table-material .item-most-runs td { background: rgba(0, 255, 127, 0.1); }
+.table-material .total th { border-top-width: 2px; border-bottom: 2px solid white; }
+.table-material .gap { border: none !important; padding: 5px; }
+.table-material .quantity, .table-material .price { text-align: center; }

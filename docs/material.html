@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/color.css">
     <link rel="stylesheet" href="/css/dark.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/material.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
@@ -22,11 +23,82 @@
     <div class="page">
         <div class="container">
             <h1>Eve Material Analysis</h1>
-            <!--
-            <?=site()->Material->handleForm()?>
-            -->
+            <div id="material-ui">
+                <p>Copy the material report from the Eve client and paste it here.</p>
+                <form id="material-form">
+                    <textarea class="form-control" id="materialInput" rows="15"></textarea><br>
+                    <button class="btn btn-primary btn-ssc-b" data-material="onAnalyze">Analyze</button>
+                </form>
+            </div>
+            <div id="material-output" style="display: none;">
+                <!-- TODO add display time and date -->
+                <!-- p>Prepared <span class="output-date"></span></p -->
+                <div class="report"></div>
+                <button class="btn btn-primary btn-ssc-b" data-material="onDismiss">OK</button>
+            </div>
+            <hr>
+            <p>Improvements:
+                <ul>
+                    <li>Add graphic for finding source</li>
+                    <li>Add time generated</li>
+                    <li>Stablize output size</li>
+                </ul>
+            </p>
         </div>
     </div>
+<script id="material-report" type="x-tmpl-mustache">
+<table class="table table-sm table-material w-auto text-white">
+{{#sections}}
+    <tr>
+        <th colspan="4">
+            <h4 class="m-0">{{name}}</h4>
+        </th>
+        <th class="gap"></th>
+        <th colspan="2">
+        {{#showCalculateFill}}
+            <input type="number" data-materialonchange="calculateFill" class="form-control form-control-sm">
+        {{/showCalculateFill}}
+        </th>
+    </tr>
+    <tr>
+        <th>Item</th>
+        <th class="text-end">Required</th>
+        <th class="text-end">Available</th>
+        <th class="text-end">Runs</th>
+        <th class="gap"></th>
+        <th class="quantity text-end">Quantity</th>
+        <th class="price text-end">Est. Ƶ</th>
+    </tr>
+{{#data}}
+    <tr class="item">
+        <td data-price="{{EstUnitPrice}}">
+            {{Item}}
+        </td>
+        <td class="text-end" data-required="{{Required}}">
+            {{FormattedRequired}}
+        </td>
+        <td class="text-end" data-available="{{Available}}">
+            {{FormattedAvailable}}
+        </td>
+        <td class="text-end" data-runs="{{Runs}}">
+            {{FormattedRuns}}
+        </td>
+        <td class="gap"></td>
+        <td class="quantity text-end"></td>
+        <td class="price text-end"></td>
+    </tr>
+{{/data}}
+{{/sections}}
+    <tr class="total">
+        <th colspan="4">
+            <h4 class="m-0">Total Estimated Price</h4>
+        </th>
+        <th class="gap"></th>
+        <th>&nbsp;</th>
+        <th class="price text-end"></th>
+    </tr>
+</table>
+</script>
 </body>
 
 </html>
