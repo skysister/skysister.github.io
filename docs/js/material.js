@@ -126,6 +126,8 @@ var material = {
             }
         }
 
+        sections[0].showCalculateFill = true;
+
         return sections;
     },
 
