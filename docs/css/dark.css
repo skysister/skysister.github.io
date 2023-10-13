@@ -1,0 +1,9 @@
+:root {
+    --ssc-black-sable: #201000;
+    --ssc-black-jet:   #343a40;
+    --ssc-black-ebon:  #202223;
+    --ssc-orange: #d97040;
+    --ssc-purple: #663275;
+    --ssc-bg-site: var(--ssc-black-jet);
+    --ssc-bg-page: var(--ssc-black-ebon);
+}

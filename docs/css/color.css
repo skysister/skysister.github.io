@@ -1,0 +1,65 @@
+/* ----- Colors ----- */
+:root {
+	/* ----- Named Colors ----- */
+	--ssc-gray-charcoal: #567;
+	--ssc-gray: #bcd;
+	--ssc-gray-light: #f7f7f7;
+	--ssc-transparent: transparent;
+	--ssc-white: white;
+	--ssc-blue: #313b72;
+	--ssc-green: #12664f;
+	--ssc-orange: #f9a03f;
+	--ssc-purple: #462255;
+	--ssc-red: #8c1c13;
+	
+	/* ----- Theme Letters ----- */
+	--ssc-a: var(--ssc-blue);
+	--ssc-b: var(--ssc-green);
+	--ssc-c: var(--ssc-orange);
+	--ssc-d: var(--ssc-purple);
+	--ssc-e: var(--ssc-red);
+	
+	/* ----- Background Colors ----- */
+	--ssc-bg-body: var(--ssc-transparent);
+	--ssc-bg-page: var(--ssc-white);
+	--ssc-bg-site: var(--ssc-gray-light);
+	
+	/* ----- Text Colors ----- */
+	--ssc-text-page: var(--ssc-gray-charcoal);
+	--ssc-text-code: var(--ssc-orange);
+	--ssc-text-dim:  var(--ssc-gray);
+}
+
+html  { background-color: var(--ssc-bg-site); }
+body  { background-color: var(--ssc-bg-body); }
+.page { background-color: var(--ssc-bg-page); color: var(--ssc-text-page); }
+
+.btn-ssc-a,
+.btn-ssc-a:not(:disabled):not(.disabled):active,
+.btn-ssc-a:hover,
+.show > .btn-ssc-a.dropdown-toggle  { background-color: var(--ssc-a); border-color: var(--ssc-a); color: var(--ssc-white); }
+.text-ssc-a { color: var(--ssc-a); }
+
+.btn-ssc-b,
+.btn-ssc-b:not(:disabled):not(.disabled):active,
+.btn-ssc-b:hover,
+.show > .btn-ssc-b.dropdown-toggle  { background-color: var(--ssc-b); border-color: var(--ssc-b); color: var(--ssc-white); }
+.text-ssc-b { color: var(--ssc-b); }
+
+.btn-ssc-c,
+.btn-ssc-c:not(:disabled):not(.disabled):active,
+.btn-ssc-c:hover,
+.show > .btn-ssc-c.dropdown-toggle  { background-color: var(--ssc-c); border-color: var(--ssc-c); color: var(--ssc-white); }
+.text-ssc-c { color: var(--ssc-c); }
+
+.btn-ssc-d,
+.btn-ssc-d:not(:disabled):not(.disabled):active,
+.btn-ssc-d:hover,
+.show > .btn-ssc-d.dropdown-toggle  { background-color: var(--ssc-d); border-color: var(--ssc-d); color: var(--ssc-white); }
+.text-ssc-d { color: var(--ssc-d); }
+
+.btn-ssc-e,
+.btn-ssc-e:not(:disabled):not(.disabled):active,
+.btn-ssc-e:hover,
+.show > .btn-ssc-e.dropdown-toggle  { background-color: var(--ssc-e); border-color: var(--ssc-e); color: var(--ssc-white); }
+.text-ssc-e { color: var(--ssc-e); }
