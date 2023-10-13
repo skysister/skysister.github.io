@@ -24,8 +24,11 @@ var material = {
         $("#material-output").show();
     },
 
-    onDismiss: function() {
+    onDismiss: function () {
+        // empty input
         $("#materialInput").val("");
+
+        // toggle view
         $("#material-ui").show();
         $("#material-output").hide();
     },
@@ -45,7 +48,7 @@ var material = {
             // add section every time a line has no tabs
             if (tabs == 0) {
                 current = parsed.length;
-                parsed.push({name: line, data: []});
+                parsed.push({ name: line, data: [] });
                 header = null;
                 continue; // next line
             }
@@ -82,7 +85,7 @@ var material = {
         for (var s in sections) {
             for (var i in sections[s].data) {
                 var item = sections[s].data[i];
-                sections[s].data[i]["Runs Available"] = item.Available / item.Required;
+                sections[s].data[i].Runs = item.Available / item.Required;
             }
         }
 
@@ -97,11 +100,11 @@ var material = {
             for (var i in sections[s].data) {
                 var item = sections[s].data[i];
                 sections[s].data[i].classes = [];
-                if (least == null || item["Runs Available"] < least.value) {
-                    least = { s, i, value: item["Runs Available"] };
+                if (least == null || item.Runs < least.value) {
+                    least = { s, i, value: item.Runs };
                 }
-                if (most == null || item["Runs Available"] > most.value) {
-                    most = { s, i, value: item["Runs Available"] };
+                if (most == null || item.Runs > most.value) {
+                    most = { s, i, value: item.Runs };
                 }
             }
         }
@@ -158,7 +161,7 @@ var material = {
             const price = parseFloat(row.find("[data-price]").data("price"));
             const required = parseFloat(row.find("[data-required]").data("required"));
             const available = parseFloat(row.find("[data-available]").data("available"));
-            const runsavailable = parseFloat(row.find("[data-runsavailable]").data("runsavailable"));
+            const runs = parseFloat(row.find("[data-runs]").data("runs"));
 
             const quantityCell = row.find(".quantity");
             const priceCell = row.find(".price");
@@ -167,7 +170,7 @@ var material = {
             quantityCell.text("");
             priceCell.text("");
 
-            if (desiredruns > runsavailable) {
+            if (desiredruns > runs) {
                 quantityNeeded = (desiredruns * required) - available;
                 estimatedPrice = price * quantityNeeded;
                 quantityCell.text(quantityNeeded.toLocaleString(undefined, thousands));
