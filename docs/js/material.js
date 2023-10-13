@@ -17,6 +17,12 @@ var material = {
         console.log("analysis", analysis);
     },
 
+    onDismiss: function() {
+        $("#materialInput").val("");
+        $("#material-ui").show();
+        $("#material-output").hide();
+    },
+
     parse: function (input) {
         // split into an array of lines, filtering out empties
         var lines = input.split("\n").filter(line => line.trim() != "");
