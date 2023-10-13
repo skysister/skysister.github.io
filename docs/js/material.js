@@ -28,7 +28,7 @@ var material = {
         var lines = input.split("\n").filter(line => line.trim() != "");
 
         // group lines by section
-        var parsed = {};
+        var parsed = [];
         for (var line of lines) {
             line = line.trim();
             var tabs = line.split("\t").length - 1;
@@ -37,8 +37,8 @@ var material = {
 
             // add section every time a line has no tabs
             if (tabs == 0) {
-                parsed[line] = [];
-                current = line;
+                current = parsed.length;
+                parsed.push({name: line, data: []});
                 header = null;
                 continue; // next line
             }
@@ -50,7 +50,7 @@ var material = {
             }
 
             // otherwise, it's data
-            parsed[current].push(material.parseLine(line, header));
+            parsed[current].data.push(material.parseLine(line, header));
         }
 
         return parsed;
@@ -73,9 +73,9 @@ var material = {
 
     calculate: function (sections) {
         for (var s in sections) {
-            for (var i in sections[s]) {
-                var item = sections[s][i];
-                sections[s][i]["Runs Available"] = item.Available / item.Required;
+            for (var i in sections[s].data) {
+                var item = sections[s].data[i];
+                sections[s].data[i]["Runs Available"] = item.Available / item.Required;
             }
         }
 
@@ -87,20 +87,20 @@ var material = {
         var most = null;
 
         for (var s in sections) {
-            for (var i in sections[s]) {
-                var item = sections[s][i];
-                sections[s][i].classes = [];
+            for (var i in sections[s].data) {
+                var item = sections[s].data[i];
+                sections[s].data[i].classes = [];
                 if (least == null || item["Runs Available"] < least.value) {
-                    least = {s, i, value: item["Runs Available"]};
+                    least = { s, i, value: item["Runs Available"] };
                 }
                 if (most == null || item["Runs Available"] > most.value) {
-                    most = {s, i, value: item["Runs Available"]};
+                    most = { s, i, value: item["Runs Available"] };
                 }
             }
         }
 
-        sections[least.s][least.i].classes.push("item-least-runs");
-        sections[most.s][most.i].classes.push("item-most-runs");
+        sections[least.s].data[least.i].classes.push("item-least-runs");
+        sections[most.s].data[most.i].classes.push("item-most-runs");
 
         return sections;
     },
