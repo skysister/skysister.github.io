@@ -1,21 +1,8 @@
 var material = {
     onDocumentReady: function () {
         console.log("material.onDocumentReady()");
-        $("body").on("click", "[data-material]", material.onClick);
+        OnClick.install("material"); // attaches click handlers
         $("body").on("change", "[data-materialonchange]", material.onChange);
-    },
-
-    onClick: function(e) {
-		var target = $(this);
-		var action = target.data("material");
-
-        console.log("action is " + action);
-        if (typeof material[action] != "function") {
-            console.error("Could not find method named " + action + ". Aborting.");
-            return;
-        }
-
-        material[action](target);
     },
 
     onConvert: function () {
