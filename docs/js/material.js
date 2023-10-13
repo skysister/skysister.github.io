@@ -105,6 +105,20 @@ var material = {
         return sections;
     },
 
+    format: function (sections) {
+        for (var s in sections) {
+            for (var i in sections[s].data) {
+                var item = sections[s].data[i];
+                sections[s].data[i].EstUnitPrice = item["Est. Unit price"];
+                sections[s].data[i].FormattedRuns = Math.floor(item.Runs).toLocaleString();
+                sections[s].data[i].FormattedAvailable = Number(item.Available).toLocaleString();
+                sections[s].data[i].FormattedRequired = Number(item.Required).toLocaleString();
+            }
+        }
+
+        return sections;
+    },
+
     onChange: function () {
         var target = $(this);
         var action = target.data("materialonchange");
