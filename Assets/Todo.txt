@@ -1,6 +1,13 @@
+Docker System Update, iMac
+- add network mplocal
+- recompose with docker ministack
+- normalize project so docker-compose.yml is again the same
+
+-----
+
 Repo Time
 √ get Sourcetree working with Github on both computers
 √ clone the skysister repo
 √ relocate active code to /docs folder
 √ PR and merge from both computers
-- spin up local Docker container?
+√ spin up local Docker container
