@@ -12,6 +12,7 @@ var material = {
         var parsed = material.parse(input);
         console.log("parsed", parsed);
         var calculated = material.calculate(parsed);
+        console.log("calculated", calculated);
         var analysis = material.analyze(calculated);
     },
 
@@ -64,6 +65,13 @@ var material = {
     },
 
     calculate: function (sections) {
+        for (var s in sections) {
+            for (var i in sections[s]) {
+                var item = sections[s][i];
+                sections[s][i]["Runs Available"] = item.Available / item.Required;
+            }
+        }
+
         return sections;
     },
 
