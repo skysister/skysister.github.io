@@ -1,5 +1,5 @@
 var material = {
-    onDocumentReady: function() {
+    onDocumentReady: function () {
         console.log("material.onDocumentReady()");
         $("body").on("click", "[data-material]", material.onClick);
         $("body").on("change", "[data-materialonchange]", material.onChange);
@@ -18,9 +18,9 @@ var material = {
         material[action](target);
     },
 
-    onChange: function() {
-		var target = $(this);
-		var action = target.data("materialonchange");
+    onChange: function () {
+        var target = $(this);
+        var action = target.data("materialonchange");
 
         console.log("action is " + action);
         if (typeof material[action] != "function") {
@@ -31,7 +31,7 @@ var material = {
         material[action](target);
     },
 
-    calculateFill: function(target) {
+    calculateFill: function (target) {
         const desiredruns = parseInt(target.val());
 
         // define formats
@@ -45,7 +45,7 @@ var material = {
         }
 
         let total = 0;
-        $(".table-material .item").each(function(index, element) {
+        $(".table-material .item").each(function (index, element) {
             const row = $(this);
             const price = parseFloat(row.find("[data-price]").data("price"));
             const required = parseFloat(row.find("[data-required]").data("required"));
