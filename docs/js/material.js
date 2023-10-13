@@ -18,6 +18,49 @@ var material = {
         material[action](target);
     },
 
+    onConvert: function () {
+        var input = $("#materialInput").val();
+        console.log(input);
+
+        var parsed = material.parse(input);
+        console.log("parsed", parsed);
+        var calculated = material.calculate(parsed);
+        var analysis = material.analyze(calculated);
+    },
+
+    parse: function (input) {
+        // split into an array of lines, filtering out empties
+        var lines = input.split("\n").filter(line => line.trim() != "");
+
+        // group lines by section
+        var parsed = {};
+        for (var line of lines) {
+            line = line.trim();
+            var tabs = line.split("\t").length - 1;
+            var current;
+            var header;
+
+            // add section every time a line has no tabs
+            if (tabs == 0) {
+                parsed[line] = [];
+                current = line;
+                header = null;
+                continue; // next line
+            }
+
+            // if there is no header, use this line
+            if (tabs > 0 && header == null) {
+                header = material.parseLine(line);
+                continue; // next line
+            }
+
+            // otherwise, it's data
+            parsed[current].push(material.parseLine(line, header));
+        }
+
+        return parsed;
+    },
+
     parseLine: function (line, keys = null) {
         // split the line by tabs
         line = line.split("\t");
