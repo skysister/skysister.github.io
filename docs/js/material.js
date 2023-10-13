@@ -18,6 +18,26 @@ var material = {
         material[action](target);
     },
 
+    parseLine: function (line, keys = null) {
+        // split the line by tabs
+        line = line.split("\t");
+
+        // if there's no keys, return the split line array as is
+        if (keys == null) {
+            return line;
+        }
+
+        return line.map((value, l) => ({ [keys[l]]: value }));
+    },
+
+    calculate: function (sections) {
+        return sections;
+    },
+
+    analyze: function (sections) {
+        return sections;
+    },
+
     onChange: function () {
         var target = $(this);
         var action = target.data("materialonchange");
