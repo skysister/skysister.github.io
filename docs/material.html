@@ -22,6 +22,13 @@
     <div class="page">
         <div class="container">
             <h1>Eve Material Analysis</h1>
+            <div id="material-ui">
+                <p>Copy the material report from the Eve client and paste it here.</p>
+                <form id="material-form">
+                    <textarea class="form-control" id="materialInput" rows="15"></textarea><br>
+                    <button class="btn btn-primary btn-ssc-b" data-material="onAnalyze">Analyze</button>
+                </form>
+            </div>
             <div id="material-output" style="display: none;">
                 <p>Prepared <span class="output-date"></span></p>
                 <div class="report"></div>
