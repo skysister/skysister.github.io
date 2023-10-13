@@ -53,7 +53,11 @@ var material = {
         line = line.split("\t");
 
         if (keys != null) {
-            line = line.map((value, l) => ({ [keys[l]]: value }));
+            var lineObj = {};
+            for (var l = 0; l < line.length; l++) {
+                lineObj[keys[l]] = line[l];
+            }
+            line = lineObj;
         }
 
         return line;
