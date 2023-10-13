@@ -1,5 +1,5 @@
 Docker System Update, iMac
-- add network mplocal
+√ add network mplocal
 - recompose with docker ministack
 - normalize project so docker-compose.yml is again the same
 
