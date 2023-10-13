@@ -7,14 +7,21 @@ var material = {
 
     onAnalyze: function () {
         var input = $("#materialInput").val();
-        console.log(input);
 
         var parsed = material.parse(input);
-        console.log("parsed", parsed);
         var calculated = material.calculate(parsed);
-        console.log("calculated", calculated);
-        var analysis = material.analyze(calculated);
-        console.log("analysis", analysis);
+        var analyzed = material.analyze(calculated);
+        var formatted = material.format(analyzed);
+
+        // output
+        $("#material-output .report").empty()
+            .append(Mustache.render(
+                $("#material-report").html(), { sections: formatted }
+            ));
+
+        // toggle view
+        $("#material-ui").hide();
+        $("#material-output").show();
     },
 
     onDismiss: function() {
