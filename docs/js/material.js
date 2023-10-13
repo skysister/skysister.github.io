@@ -14,6 +14,7 @@ var material = {
         var calculated = material.calculate(parsed);
         console.log("calculated", calculated);
         var analysis = material.analyze(calculated);
+        console.log("analysis", analysis);
     },
 
     parse: function (input) {
@@ -76,6 +77,25 @@ var material = {
     },
 
     analyze: function (sections) {
+        var least = null;
+        var most = null;
+
+        for (var s in sections) {
+            for (var i in sections[s]) {
+                var item = sections[s][i];
+                sections[s][i].classes = [];
+                if (least == null || item["Runs Available"] < least.value) {
+                    least = {s, i, value: item["Runs Available"]};
+                }
+                if (most == null || item["Runs Available"] > most.value) {
+                    most = {s, i, value: item["Runs Available"]};
+                }
+            }
+        }
+
+        sections[least.s][least.i].classes.push("item-least-runs");
+        sections[most.s][most.i].classes.push("item-most-runs");
+
         return sections;
     },
 
