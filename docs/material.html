@@ -24,14 +24,65 @@
             <h1>Eve Material Analysis</h1>
             <div id="material-output" style="display: none;">
                 <p>Prepared <span class="output-date"></span></p>
-                <button class="btn btn-primary btn-ssc-b" data-material="onDismiss">OK</button>
                 <div class="report"></div>
+                <button class="btn btn-primary btn-ssc-b" data-material="onDismiss">OK</button>
             </div>
             <!--
             <?=site()->Material->handleForm()?>
             -->
         </div>
     </div>
+<script id="material-report" type="x-tmpl-mustache">
+<table class="table table-sm table-material w-auto text-white">
+{{#sections}}
+    <tr>
+        <th colspan="4">
+            <h4 class="m-0">{{name}}</h4>
+        </th>
+        <th class="gap"></th>
+        <th colspan="2">
+            <input type="number" data-materialonchange="calculateFill" class="form-control form-control-sm">
+        </th>
+    </tr>
+    <tr>
+        <th>Item</th>
+        <th class="text-end">Required</th>
+        <th class="text-end">Available</th>
+        <th class="text-end">Runs</th>
+        <th class="gap"></th>
+        <th class="quantity text-end">Quantity</th>
+        <th class="price text-end">Est. Ƶ</th>
+    </tr>
+{{#data}}
+    <tr class="item">
+        <td data-price="{{EstUnitPrice}}">
+            {{Item}}
+        </td>
+        <td class="text-end" data-required="{{Required}}">
+            {{FormattedRequired}}
+        </td>
+        <td class="text-end" data-available="{{Available}}">
+            {{FormattedAvailable}}
+        </td>
+        <td class="text-end" data-runs="{{Runs}}">
+            {{FormattedRuns}}
+        </td>
+        <td class="gap"></td>
+        <td class="quantity text-end"></td>
+        <td class="price text-end"></td>
+    </tr>
+{{/data}}
+{{/sections}}
+    <tr class="total">
+        <th colspan="4">
+            <h4 class="m-0">Total Estimated Price</h4>
+        </th>
+        <th class="gap"></th>
+        <th>&nbsp;</th>
+        <th class="price text-end"></th>
+    </tr>
+</table>
+</script>
 </body>
 
 </html>
