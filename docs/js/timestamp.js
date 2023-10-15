@@ -4,12 +4,12 @@ var timestamp = {
         OnClick.install("timestamp"); // attaches click handlers
     },
 
-    convertFromEve: function () {
+    convertStationTimer: function () {
         var patterns = ["YYYY.MM.DD", "HH:mm:SS"];
         var datetime = [];
 
         // get input
-        var input = $("#eveInput").val().trim();
+        var input = $("#stationTimer").val().trim();
 
         // split off chat log timestamp and character
         if (input.charAt(0) == "[") {
@@ -44,8 +44,12 @@ var timestamp = {
         site.copyToClipboard([subject, "timer expires", relative, "@", fulldatetime].join(" "));
     },
 
-    convertEveBulk: function () {
-        var input = $("#eveBulkInput").val().trim().split("\n");
+    stationTimerSampleData: function () {
+        $("#stationTimer").val("Bawilan - Anacreon\n20.1 AU\nReinforced until 2023.05.12 21:46:09");
+    },
+
+    convertBulk: function () {
+        var input = $("#bulk").val().trim().split("\n");
         var patterns = ["YYYY.MM.DD", "HH:mm"];
         var output = [];
 
@@ -75,8 +79,8 @@ var timestamp = {
         site.copyToClipboard(output.join("\n"));
     },
 
-    convert: function () {
-        var input = $("#input").val();
+    convertSimple: function () {
+        var input = $("#simple").val();
         var inputMoment = moment(input);
 
         $("#output").val(inputMoment.unix());
