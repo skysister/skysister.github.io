@@ -24,6 +24,10 @@ var material = {
         $("#material-output").show();
     },
 
+    onSampleData: function() {
+        $("#materialInput").val("Planetary materials				\nItem	Required	Available	Est. Unit price	typeID\nRobotics	2	3132	92305.71	9848\nEnriched Uranium	8	16	11280.52	44\nMechanical Parts	8	1878	10820.12	3689\nCoolant	17	5084	10635.38	9832\nOxygen	40	55455	626.62	3683\n\nMinerals				\nItem	Required	Available	Est. Unit price	typeID\nStrontium Clathrates	36	38860	2709.54	16275\nHeavy Water	303	3361493	135.94	16272\nLiquid Ozone	624	2194669	118.52	16273\nOxygen Isotopes	802	9300367	558.38	17887\n\n");
+    },
+
     onDismiss: function () {
         // empty input
         $("#materialInput").val("");
