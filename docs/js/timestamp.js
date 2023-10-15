@@ -18,7 +18,7 @@ var timestamp = {
         }
 
         // replace <br> with \n and split
-        input = input.replaceAll("<br>", "\n").split("\n");
+        input = input.replaceAll("<br>", "\n").split(/\r?\n/);
 
         // extract system and station
         var firstline = input[0].split(" - ");

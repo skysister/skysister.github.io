@@ -39,7 +39,7 @@ var material = {
 
     parse: function (input) {
         // split into an array of lines, filtering out empties
-        var lines = input.split("\n").filter(line => line.trim() != "");
+        var lines = input.split(/\r?\n/).filter(line => line.trim() != "");
 
         // group lines by section
         var parsed = [];
