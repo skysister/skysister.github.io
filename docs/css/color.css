@@ -34,6 +34,13 @@ html  { background-color: var(--ssc-bg-site); }
 body  { background-color: var(--ssc-bg-body); }
 .page { background-color: var(--ssc-bg-page); color: var(--ssc-text-page); }
 
+.badge-ssc-version { background-color: black; color: white; font-size: 0.5em; }
+.badge-ssc-a { background-color: var(--ssc-a); }
+.badge-ssc-b { background-color: var(--ssc-b); }
+.badge-ssc-c { background-color: var(--ssc-c); }
+.badge-ssc-d { background-color: var(--ssc-d); }
+.badge-ssc-e { background-color: var(--ssc-e); }
+
 .btn-ssc-a,
 .btn-ssc-a.show,
 .btn-ssc-a:not(:disabled):not(.disabled):active,
