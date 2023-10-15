@@ -18,6 +18,9 @@ var material = {
             .append(Mustache.render(
                 $("#material-report").html(), { sections: formatted }
             ));
+        
+        // prepared
+        $(".output-date").text(moment().format("dddd, MMMM D, YYYY @ h:mm:ss a"));
 
         // toggle view
         $("#material-ui").hide();
