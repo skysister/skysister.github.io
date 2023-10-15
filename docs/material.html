@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Material Analysis :: Sky Sister</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,15 +32,22 @@
             <h1>Eve Material Analysis</h1>
             <div id="material-ui">
                 <p>Copy the material report from the Eve client and paste it here.</p>
-                <form id="material-form">
-                    <textarea class="form-control" id="materialInput" rows="15"></textarea><br>
-                    <button class="btn btn-primary btn-ssc-c" data-material="onAnalyze">
-                        Analyze
-                    </button>
-                    <button class="btn btn-outline btn-ssc-c" data-material="onSampleData">
-                        Sample Data
-                    </button>
-                </form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="material-form">
+                            <textarea class="form-control" id="materialInput" rows="15"></textarea><br>
+                            <button class="btn btn-primary btn-ssc-c" data-material="onAnalyze">
+                                Analyze
+                            </button>
+                            <button class="btn btn-outline btn-ssc-c" data-material="onSampleData">
+                                Sample Data
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="/img/material-information.png">
+                    </div>
+                </div>
             </div>
             <div id="material-output" style="display: none;">
                 <!-- TODO add display time and date -->
@@ -51,7 +58,6 @@
             <hr class="hr-ssc hr-ssc-c">
             <p>Improvements:
                 <ul class="marker-ssc marker-ssc-c">
-                    <li>Add graphic for finding source</li>
                     <li>Add time generated</li>
                     <li>Stablize output size</li>
                 </ul>
