@@ -49,9 +49,18 @@
                     </div>
                 </div>
             </div>
-            <div id="material-output" style="display: none;">
+            <div id="material-output" class="mb-5" style="display: none;">
                 <p>Prepared <span class="output-date"></span></p>
                 <div class="report"></div>
+                <div class="my-3 legend d-inline-flex flex-column">
+                    <div class="border-bottom border-top my-1 py-1 px-2 item-least-runs">
+                        Limiting Material (least runs available)
+                    </div>
+                    <div class="border-bottom border-top my-1 py-1 px-2 item-most-runs">
+                        Abundant Material (most runs available)
+                    </div>
+                </div>
+                <br>
                 <button class="btn btn-primary btn-ssc-c" data-material="onDismiss">OK</button>
             </div>
             <hr class="hr-ssc hr-ssc-c">
@@ -73,7 +82,10 @@
         <th class="gap"></th>
         <th colspan="2">
         {{#showCalculateFill}}
-            <input type="number" data-materialonchange="calculateFill" class="form-control form-control-sm">
+            <input type="number" class="form-control form-control-sm"
+                title="Desired manufacture quantity"
+                data-materialonchange="calculateFill"
+            >
         {{/showCalculateFill}}
         </th>
     </tr>
@@ -87,7 +99,7 @@
         <th class="price text-end">Est. Ƶ</th>
     </tr>
 {{#data}}
-    <tr class="item">
+    <tr class="item{{#classes}} {{classes}}{{/classes}}">
         <td data-price="{{EstUnitPrice}}">
             {{Item}}
         </td>
