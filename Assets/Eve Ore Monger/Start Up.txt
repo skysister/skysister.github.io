@@ -1,0 +1,25 @@
+Oremon Init
+1. oremon loads data
+2. trigger user.init()
+
+User Init
+1. check for local user data
+    - local user is missing
+        - select user (will become log in)
+    - local user is present
+        - load user data
+        - trigger pool.init
+
+Pool Init
+1. check for local pool data
+    - local pool is missing
+        - display welcome message
+        - display new pool interface
+    - local pool is present
+        - load pool data
+        - check for current pool
+            - current pool is present
+                - display current pool
+            - current pool is missing
+                - display list of pools
+
