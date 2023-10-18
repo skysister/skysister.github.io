@@ -31,6 +31,18 @@ var oremon = {
                 console.warn("Failed to read", oremon.path[name]);
             })
             .promise();
+    },
+
+    loadTemplate: function (template, vars, empty = true) {
+        const container = $("#oremon");
+
+        if (empty) {
+            container.empty();
+        }
+
+        container.append(Mustache.render(
+            $(template).html(), vars
+        ));
     }
 };
 
