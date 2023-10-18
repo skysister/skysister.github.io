@@ -5,6 +5,7 @@ It has fields:
 - poolID: unique identifier of this pool
 - userID: which user this pool belongs to
 - poolName: name of this pool
+- status: open, closed
 - characterName: name of character this pool is for
 - description: text describing this pool
 - dateTimeCreated: when this pool was created
