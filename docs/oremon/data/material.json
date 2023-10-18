@@ -1,0 +1,317 @@
+[
+	{
+		"name": "Veldspar",
+		"yield": 1,
+		"volume": 0.1
+	},
+	{
+		"name": "Concentrated Veldspar",
+		"yield": 1.05,
+		"volume": 0.1
+	},
+	{
+		"name": "Dense Veldspar",
+		"yield": 1.1,
+		"volume": 0.1
+	},
+	{
+		"name": "Stable Veldspar",
+		"yield": 1.15,
+		"volume": 0.1
+	},
+	{
+		"name": "Scordite",
+		"yield": 1,
+		"volume": 0.15
+	},
+	{
+		"name": "Condensed Scordite",
+		"yield": 1.05,
+		"volume": 0.15
+	},
+	{
+		"name": "Massive Scordite",
+		"yield": 1.1,
+		"volume": 0.15
+	},
+	{
+		"name": "Glossy Scordite",
+		"yield": 1.15,
+		"volume": 0.15
+	},
+	{
+		"name": "Pyroxeres",
+		"yield": 1,
+		"volume": 0.3
+	},
+	{
+		"name": "Solid Pyroxeres",
+		"yield": 1.05,
+		"volume": 0.3
+	},
+	{
+		"name": "Viscous Pyroxeres",
+		"yield": 1.1,
+		"volume": 0.3
+	},
+	{
+		"name": "Opulent Pyroxeres",
+		"yield": 1.15,
+		"volume": 0.3
+	},
+	{
+		"name": "Plagioclase",
+		"yield": 1,
+		"volume": 0.35
+	},
+	{
+		"name": "Azure Plagioclase",
+		"yield": 1.05,
+		"volume": 0.35
+	},
+	{
+		"name": "Rich Plagioclase",
+		"yield": 1.1,
+		"volume": 0.35
+	},
+	{
+		"name": "Sparkling Plagioclase",
+		"yield": 1.15,
+		"volume": 0.35
+	},
+	{
+		"name": "Omber",
+		"yield": 1,
+		"volume": 0.6
+	},
+	{
+		"name": "Silvery Omber",
+		"yield": 1.05,
+		"volume": 0.6
+	},
+	{
+		"name": "Golden Omber",
+		"yield": 1.1,
+		"volume": 0.6
+	},
+	{
+		"name": "Platinoid Omber",
+		"yield": 1.15,
+		"volume": 0.6
+	},
+	{
+		"name": "Kernite",
+		"yield": 1,
+		"volume": 1.2
+	},
+	{
+		"name": "Luminous Kernite",
+		"yield": 1.05,
+		"volume": 1.2
+	},
+	{
+		"name": "Fiery Kernite",
+		"yield": 1.1,
+		"volume": 1.2
+	},
+	{
+		"name": "Resplendant Kernite",
+		"yield": 1.15,
+		"volume": 1.2
+	},
+	{
+		"name": "Jaspet",
+		"yield": 1,
+		"volume": 2
+	},
+	{
+		"name": "Pure Jaspet",
+		"yield": 1.05,
+		"volume": 2
+	},
+	{
+		"name": "Pristine Jaspet",
+		"yield": 1.1,
+		"volume": 2
+	},
+	{
+		"name": "Immaculate Jaspet",
+		"yield": 1.15,
+		"volume": 2
+	},
+	{
+		"name": "Hemorphite",
+		"yield": 1,
+		"volume": 3
+	},
+	{
+		"name": "Vivid Hemorphite",
+		"yield": 1.05,
+		"volume": 3
+	},
+	{
+		"name": "Radiant Hemorphite",
+		"yield": 1.1,
+		"volume": 3
+	},
+	{
+		"name": "Scintillating Hemorphite",
+		"yield": 1.15,
+		"volume": 3
+	},
+	{
+		"name": "Hedbergite",
+		"yield": 1,
+		"volume": 3
+	},
+	{
+		"name": "Vitric Hedbergite",
+		"yield": 1.05,
+		"volume": 3
+	},
+	{
+		"name": "Glazed Hedbergite",
+		"yield": 1.1,
+		"volume": 3
+	},
+	{
+		"name": "Lustrous Hedbergite",
+		"yield": 1.15,
+		"volume": 3
+	},
+	{
+		"name": "Gneiss",
+		"yield": 1,
+		"volume": 5
+	},
+	{
+		"name": "Iridescent Gneiss",
+		"yield": 1.05,
+		"volume": 5
+	},
+	{
+		"name": "Prismatic Gneiss",
+		"yield": 1.1,
+		"volume": 5
+	},
+	{
+		"name": "Brilliant Gneiss",
+		"yield": 1.15,
+		"volume": 5
+	},
+	{
+		"name": "Dark Ochre",
+		"yield": 1,
+		"volume": 8
+	},
+	{
+		"name": "Onyx Ochre",
+		"yield": 1.05,
+		"volume": 8
+	},
+	{
+		"name": "Obsidian Ochre",
+		"yield": 1.1,
+		"volume": 8
+	},
+	{
+		"name": "Jet Ochre",
+		"yield": 1.15,
+		"volume": 8
+	},
+	{
+		"name": "Crokite",
+		"yield": 1,
+		"volume": 16
+	},
+	{
+		"name": "Sharp Crokite",
+		"yield": 1.05,
+		"volume": 16
+	},
+	{
+		"name": "Crystalline Crokite",
+		"yield": 1.1,
+		"volume": 16
+	},
+	{
+		"name": "Pellucid Crokite",
+		"yield": 1.15,
+		"volume": 16
+	},
+	{
+		"name": "Spodumain",
+		"yield": 1,
+		"volume": 16
+	},
+	{
+		"name": "Bright Spodumain",
+		"yield": 1.05,
+		"volume": 16
+	},
+	{
+		"name": "Gleaming Spodumain",
+		"yield": 1.1,
+		"volume": 16
+	},
+	{
+		"name": "Dazzling Spodumain",
+		"yield": 1.15,
+		"volume": 16
+	},
+	{
+		"name": "Arkonor",
+		"yield": 1,
+		"volume": 16
+	},
+	{
+		"name": "Crimson Arkonor",
+		"yield": 1.05,
+		"volume": 16
+	},
+	{
+		"name": "Prime Arkonor",
+		"yield": 1.1,
+		"volume": 16
+	},
+	{
+		"name": "Flawless Arkonor",
+		"yield": 1.15,
+		"volume": 16
+	},
+	{
+		"name": "Bistot",
+		"yield": 1,
+		"volume": 16
+	},
+	{
+		"name": "Triclinic Bistot",
+		"yield": 1.05,
+		"volume": 16
+	},
+	{
+		"name": "Monoclinic Bistot",
+		"yield": 1.1,
+		"volume": 16
+	},
+	{
+		"name": "Cubic Bistot",
+		"yield": 1.15,
+		"volume": 16
+	},
+	{
+		"name": "Mercoxit",
+		"yield": 1,
+		"volume": 40
+	},
+	{
+		"name": "Magma Mercoxit",
+		"yield": 1.05,
+		"volume": 40
+	},
+	{
+		"name": "Vitreous Mercoxit",
+		"yield": 1.1,
+		"volume": 40
+	}
+]
