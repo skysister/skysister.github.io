@@ -3,7 +3,7 @@ Implementation Plan
 Alpha 0.1: MVP Minimum Viable Product
 √ create repo on GitHub
 √ host on https://skysister.github.io
-- commit from two computers
+√ commit from two computers
 Features
 - record ore deposits
 - basic UI
