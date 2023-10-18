@@ -38,4 +38,48 @@
     <div id="nav-footer"></div>
 </body>
 
+<script id="user-list" type="x-tmpl-mustache">
+<p>Select a user:</p>
+<div class="row">
+{{#users}}
+<div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="user-item" data-user="onSelect" data-userid="{{userID}}">
+        <h4>{{characterName}}</h4>
+        <img src="{{portraitSrc}}">
+    </div>
+</div>
+{{/users}}
+</div>
+</script>
+<script id="welcome" type="x-tmpl-mustache">
+<h3>Welcome {{characterName}}</h3>
+<p>Ore Monger is online.</p>
+</script>
+<script id="new-pool" type="x-tmpl-mustache">
+<hr>
+<h3>Make a New Pool</h3>
+<form id="new-pool-form" class="row">
+    <div class="col-auto">
+        <input name="characterName" class="form-control" placeholder="Character Name">
+    </div>
+    <div class="col-auto">
+        <input name="poolName" class="form-control" placeholder="Pool Name">
+    </div>
+    <div class="col-auto">
+        <input name="poolDescription" class="form-control" placeholder="Pool Description">
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary btn-ssc-d" data-pool="onNewPool">
+            Create
+        </button>
+    </div>
+</form>
+</script>
+<script id="select-status" type="x-tmpl-mustache">
+<select name="status">
+    <option value="open">Open</option>
+    <option value="closed">Closed</option>
+</select>
+</script>
+
 </html>
