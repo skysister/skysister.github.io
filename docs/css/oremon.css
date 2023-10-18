@@ -1,0 +1,11 @@
+.user-item {
+    border: 1px solid var(--ssc-d);
+    border-radius: 4px;
+    margin: 10px auto;
+    padding: 14px 0;
+    text-align: center;
+    max-width: 250px;
+}
+.user-item:hover, .user-item:active {
+    border-color: white;
+}
