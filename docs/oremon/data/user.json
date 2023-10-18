@@ -1,10 +1,12 @@
 {
     "1": {
         "characterName": "Maru Skyborne",
+        "eveID": 1740039545,
         "dateTimeCreated": "2023-10-18T08:00:00-05:00"
     },
     "2": {
         "characterName": "FallenAngeI",
+        "eveID": 2118250436,
         "dateTimeCreated": "2023-10-18T08:00:00-05:00"
     }
 }
