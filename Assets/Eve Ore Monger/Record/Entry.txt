@@ -1,0 +1,29 @@
+Entry Record
+
+Each record represents a transaction for a pool.
+It has fields:
+- entryID: unique identifier of this entry
+- poolID: which pool this belongs to
+- entryType: deposit, withdraw, note
+- text: description as desired
+- characterName: name of associated character
+- oreType: specific type of associated ore
+- quantity: how much associated ore
+- estimatedIsk: estimated ISK value given by Eve
+- dateTime: date and time of entry
+
+Write Custom Parser
+Should be able to populate
+- oreType
+- quantity
+- estimatedIsk
+And generate
+- dateTime
+Leaving the operator to enter
+- characterName
+- poolID
+
+Parser Data Source
+- inventory copy
+- mining ledger copy
+- mining ledger copy via chat
