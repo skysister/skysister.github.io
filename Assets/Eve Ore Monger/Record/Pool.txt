@@ -1,0 +1,10 @@
+Pool Record
+
+Each record represents an individual the user is engaged in trade with.
+It has fields:
+- poolID: unique identifier of this pool
+- userID: which user this pool belongs to
+- poolName: name of this pool
+- characterName: name of character this pool is for
+- description: text describing this pool
+- dateTimeCreated: when this pool was created

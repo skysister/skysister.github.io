@@ -1,0 +1,7 @@
+User Record
+
+Each user represents a user represents a person using the app who wants to track deposits into one or more pools.
+It has fields:
+- userID: unique identifier of this user
+- characterName: name of character for this user
+- dateTimeCreated: when this user was created
