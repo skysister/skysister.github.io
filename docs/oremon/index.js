@@ -1,32 +1,36 @@
 var oremon = {
     data: {},
     path: {
-        material: "/oremon/data/material.json",
+        user: "/oremon/data/user.json",
+        material: "/oremon/data/material.json"
     },
 
     onDocumentReady: function () {
-        console.log("oremon.onDocumentReady()");
-        var dataIsAllRead = oremon.readData();
-        $.when(...dataIsAllRead).done(function () {
-            console.log("All data is read.");
+        var allDataIsRead = oremon.readAllData();
+        $.when(...allDataIsRead).done(function () {
+            // all data is read
+            user.init();
         });
     },
 
-    readData: function () {
+    readAllData: function () {
         var promises = [];
         for (var name in oremon.path) {
-            console.log(name, oremon.path[name]);
-            var dataRead = $.getJSON(oremon.path[name])
-                .done(function(data) {
-                    oremon.data[name] = data;
-                })
-                .fail(function() {
-                    console.log("Failed to read", oremon.path[name]);
-                });
-            promises.push(dataRead.promise());
+            promises.push(oremon.readData(name));
         }
 
         return promises;
+    },
+
+    readData: function (name) {
+        return $.getJSON(oremon.path[name])
+            .done(function (data) {
+                oremon.data[name] = data;
+            })
+            .fail(function () {
+                console.warn("Failed to read", oremon.path[name]);
+            })
+            .promise();
     }
 };
 
