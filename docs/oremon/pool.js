@@ -11,13 +11,17 @@ var pool = {
         }
     },
 
-    noData: function() {
+    noData: function () {
         console.log("pool.noData()");
         oremon.loadTemplate("#welcome", user.variables(user.current));
         oremon.loadTemplate("#new-pool", {}, false); // don't empty
     },
 
-    foundData: function() {
+    foundData: function () {
         console.log("pool.foundData()");
+    },
+
+    onCreate: function () {
+        console.log("pool.onCreate()");
     }
 };
