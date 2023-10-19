@@ -47,23 +47,23 @@ var pool = {
         pool.data[poolKey] = entries;
     },
 
-    listVariables: function (entry) {
-        var entry = { poolID: l, ...pool.data.list[l] };
+    listVariables: function (l) {
+        var listItem = { poolID: l, ...pool.data.list[l] };
 
         // determine the name
-        entry.name = entry.poolName;
-        if (entry.name == "") {
-            entry.name = entry.characterName;
+        listItem.name = listItem.poolName;
+        if (listItem.name == "") {
+            listItem.name = listItem.characterName;
         }
-        if (entry.name == "") {
-            entry.name = entry.poolID;
+        if (listItem.name == "") {
+            listItem.name = listItem.poolID;
         }
 
         // add created date time
-        entry.created = moment.unix(entry.dateTimeCreated)
+        listItem.created = moment.unix(listItem.dateTimeCreated)
             .format(site.dateFormat);
 
-        return entry;
+        return listItem;
     },
 
     // ----- No Data -----
