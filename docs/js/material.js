@@ -20,7 +20,7 @@ var material = {
             ));
         
         // prepared
-        $(".output-date").text(moment().format("dddd, MMMM D, YYYY @ h:mm:ss a"));
+        $(".output-date").text(moment().format(site.dateFormat));
 
         // toggle view
         $("#material-ui").hide();
