@@ -75,6 +75,22 @@
     </div>
 </form>
 </script>
+<script id="pool-list" type="x-tmpl-mustache">
+<hr>
+<h3>Pools</h3>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+{{#list}}
+    <tr>
+        <td>{{name}}</td>
+        <td>View Delete</td>
+    </tr>
+{{/list}}
+</table>
+</script>
 <script id="select-status" type="x-tmpl-mustache">
 <select name="status">
     <option value="open">Open</option>
