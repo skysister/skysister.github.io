@@ -90,15 +90,7 @@ var pool = {
     list: function (empty = true) {
         var list = [];
         for (l in pool.data.list) {
-            var listItem = { poolID: l, ...pool.data.list[l] };
-            listItem.name = listItem.poolName;
-            if (listItem.name == "") {
-                listItem.name = listItem.characterName;
-            }
-            if (listItem.name == "") {
-                listItem.name = listItem.poolID;
-            }
-            list.push(listItem);
+            list.push(pool.listVariables(l));
         }
 
         oremon.loadTemplate("#pool-list", { list }, empty);
