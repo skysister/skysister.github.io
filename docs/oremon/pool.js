@@ -47,6 +47,25 @@ var pool = {
         pool.data[poolKey] = entries;
     },
 
+    listVariables: function (entry) {
+        var entry = { poolID: l, ...pool.data.list[l] };
+
+        // determine the name
+        entry.name = entry.poolName;
+        if (entry.name == "") {
+            entry.name = entry.characterName;
+        }
+        if (entry.name == "") {
+            entry.name = entry.poolID;
+        }
+
+        // add created date time
+        entry.created = moment.unix(entry.dateTimeCreated)
+            .format(site.dateFormat);
+
+        return entry;
+    },
+
     // ----- No Data -----
 
     noData: function () {
