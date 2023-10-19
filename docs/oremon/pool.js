@@ -98,6 +98,13 @@ var pool = {
         oremon.loadTemplate("#new-pool", {}, false); // don't empty
     },
 
+    view: function () {
+        const current = pool.data.current;
+        console.log("pool.view()", current);
+
+        $("#oremon").html("<hr><p>Pool View<br>Pool ID: " + current + "</p>")
+    },
+
     list: function (empty = true) {
         var list = [];
         for (l in pool.data.list) {
@@ -110,6 +117,18 @@ var pool = {
     onCreate: function () {
         console.log("pool.onCreate()");
         pool.add(pool.naieveFormValues("#new-pool-form"));
+    },
+
+    onView: function () {
+        var poolID = $(this).data("poolid");
+        console.log("pool.onView()", poolID);
+        pool.saveCurrent(poolID);
+        pool.foundData();
+    },
+
+    onList: function () {
+        pool.saveCurrent("");
+        pool.foundData();
     },
 
     naieveFormValues: function (selector) {
