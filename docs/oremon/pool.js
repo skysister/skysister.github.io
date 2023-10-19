@@ -33,6 +33,13 @@ var pool = {
         return poolID;
     },
 
+    saveCurrent: function (poolID) {
+        var data = pool.read("oremon-pool-data");
+        data.current = poolID;
+        pool.data = data;
+        pool.save(data);
+    },
+
     save: function (data, key = "oremon-pool-data") {
         localStorage.setItem(key, JSON.stringify(data));
     },
