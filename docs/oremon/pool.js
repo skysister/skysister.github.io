@@ -85,7 +85,11 @@ var pool = {
 
     foundData: function () {
         console.log("pool.foundData()");
-        pool.welcomeListNew();
+        if (pool.data.current) {
+            pool.view(pool.data.current);
+        } else {
+            pool.welcomeListNew();
+        }
     },
 
     welcomeListNew: function () {
