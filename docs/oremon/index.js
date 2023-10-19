@@ -43,6 +43,10 @@ var oremon = {
         container.append(Mustache.render(
             $(template).html(), vars
         ));
+    },
+
+    randomUUID: function () {
+        return crypto.randomUUID();
     }
 };
 
