@@ -29,7 +29,7 @@ var pool = {
         // add empty array
         pool.saveEntries([], poolID)
 
-        pool.show();
+        pool.welcomeListNew();
         return poolID;
     },
 
@@ -78,10 +78,10 @@ var pool = {
 
     foundData: function () {
         console.log("pool.foundData()");
-        pool.show();
+        pool.welcomeListNew();
     },
 
-    show: function () {
+    welcomeListNew: function () {
         oremon.loadTemplate("#welcome", user.variables(user.current));
         pool.list(false); // don't empty
         oremon.loadTemplate("#new-pool", {}, false); // don't empty
