@@ -105,7 +105,7 @@ var pool = {
         oremon.loadTemplate("#new-pool");
     },
 
-    view: function () {
+    view: function (which = "transaction") {
         oremon.empty()
             .loadTemplate("#pool-view", pool.variables(pool.data.current))
             .loadTemplate("#new-" + which);
