@@ -18,10 +18,10 @@ Should be able to populate
 - quantity
 - estimatedIsk
 And generate
+- poolID
 - dateTime
 Leaving the operator to enter
 - characterName
-- poolID
 
 Parser Data Source
 - inventory copy
