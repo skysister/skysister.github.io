@@ -107,7 +107,7 @@ var pool = {
         const current = pool.data.current;
         console.log("pool.view()", current);
 
-        $("#oremon").html("<hr><p>Pool View<br>Pool ID: " + current + "</p>")
+        oremon.loadTemplate("#pool-view", pool.variables(pool.data.current));
     },
 
     variables: function (poolID) {
