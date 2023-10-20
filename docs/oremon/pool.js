@@ -1,10 +1,11 @@
 var pool = {
+    // init is called by user (user.js)
     init: function () {
         console.log("pool.init()");
         OnClick.install("pool"); // attaches click handlers
         pool.initForms();
         pool.initData();
-        
+
         pool.render();
     },
 
