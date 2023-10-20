@@ -145,12 +145,11 @@ var pool = {
 
     onDelete: function () {
         const poolID = $(this).closest("tr").data("poolid");
-        console.log("pool.onDelete()", poolID);
 
         delete pool.data.list[poolID];
         pool.save(pool.data);
         localStorage.removeItem("oremon-pool-" + poolID);
-        
+
         pool.foundData();
     },
 
