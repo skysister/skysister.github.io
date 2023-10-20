@@ -33,16 +33,21 @@ var oremon = {
             .promise();
     },
 
-    loadTemplate: function (template, vars, empty = true) {
-        const container = $("#oremon");
+    empty: function() {
+        console.log("oremon.empty()");
+        $("#oremon").empty();
+        return oremon;
+    },
 
-        if (empty) {
-            container.empty();
-        }
+    loadTemplate: function (template, vars, parts) {
+        console.log("oremon.loadTemplate()", template);
+        const container = $("#oremon");
 
         container.append(Mustache.render(
             $(template).html(), vars
         ));
+
+        return oremon;
     },
 
     randomUUID: function () {
