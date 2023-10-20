@@ -111,6 +111,14 @@ var pool = {
             .loadTemplate("#new-" + which);
     },
 
+    onNote: function () {
+        pool.view("note");
+    },
+
+    onEntry: function () {
+        pool.view();
+    },
+
     variables: function (poolID) {
         return {
             poolID,
