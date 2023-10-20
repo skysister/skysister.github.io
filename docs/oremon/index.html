@@ -108,19 +108,34 @@
         Close
     </button>
 </h3>
-<p>{{poolID}}</p>
-<table>
+<table class="table">
+    <tr>
+        <th>Type</th>
+        <th>Character</th>
+        <th>Ore</th>
+        <th>Q</th>
+        <th>Est. Ƶ</th>
+        <th>Date Time</th>
+    </tr>
 {{^entries}}
     <tr>
-        <td>No entries.</td>
+        <td colspan="6">No entries.</td>
     </tr>
 {{/entries}}
 {{#entries}}
     <tr>
-        <td>Entry</td>
+        <td>Type</td>
+        <td>Character</td>
+        <td>Ore</td>
+        <td>Q</td>
+        <td>Est. Ƶ</td>
+        <td>Date Time</td>
     </tr>
 {{/entries}}
 </table>
+</script>
+<script id="new-transaction">
+
 </script>
 <script id="select-status" type="x-tmpl-mustache">
 <select name="status">
