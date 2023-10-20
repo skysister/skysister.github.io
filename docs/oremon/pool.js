@@ -119,13 +119,13 @@ var pool = {
         }
     },
 
-    list: function (empty = true) {
+    list: function () {
         var list = [];
         for (l in pool.data.list) {
             list.push(pool.listVariables(l));
         }
 
-        oremon.loadTemplate("#pool-list", { list }, empty);
+        oremon.loadTemplate("#pool-list", { list });
     },
 
     onCreate: function (e) {
