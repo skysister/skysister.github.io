@@ -31,7 +31,7 @@ var user = {
     notFound: function () {
         console.log("user.notFound()");
         var users = user.list();
-        oremon.loadTemplate("#user-list", { users });
+        oremon.empty().loadTemplate("#user-list", { users });
     },
 
     list: function () {
