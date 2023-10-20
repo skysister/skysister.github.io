@@ -134,8 +134,63 @@
 {{/entries}}
 </table>
 </script>
-<script id="new-transaction">
-
+<script id="new-transaction" type="x-tmpl-mustache">
+<hr>
+<h3>
+    Add Entry
+    <button class="btn btn-sm btn-ssc-d" data-pool="onNote">
+        Note
+    </button>
+</h3>
+<form id="new-transaction-form">
+    <div class="row mb-2">
+        <div class="col-auto">
+            {{>selectEntry}}
+            <input name="entryType" class="form-control" placeholder="Entry Type (select)">
+        </div>
+        <div class="col-auto">
+            <input name="characterName" class="form-control" placeholder="Character Name">
+        </div>
+        <div class="col-auto">
+            <input name="date" class="form-control" placeholder="Date Time (add now)">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-auto">
+            <input name="oreType" class="form-control" placeholder="Ore (select)">
+        </div>
+        <div class="col-auto">
+            <input name="quantity" class="form-control" placeholder="Quantity">
+        </div>
+        <div class="col-auto">
+            <input name="estIsk" class="form-control" placeholder="Est. Ƶ">
+        </div>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary btn-ssc-d">
+            Add
+        </button>
+    </div>
+</form>
+</script>
+<script id="new-note" type="x-tmpl-mustache">
+<hr>
+<h3>
+    Add Note
+    <button class="btn btn-sm btn-ssc-d" data-pool="onEntry">
+        Entry
+    </button>
+</h3>
+<form id="new-note-form" class="row">
+    <div class="col-auto">
+        <input name="text" class="form-control" placeholder="Note">
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary btn-ssc-d">
+            Add
+        </button>
+    </div>
+</form>
 </script>
 <script id="select-status" type="x-tmpl-mustache">
 <select name="status">
