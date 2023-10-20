@@ -88,7 +88,14 @@
     <tr data-pool="onView" data-poolid="{{poolID}}">
         <td>{{name}}</td>
         <td>{{created}}</td>
-        <td>View Delete</td>
+        <td>
+            <button class="btn btn-sm btn-ssc-d">
+                View
+            </button>
+            <button class="btn btn-sm btn-ssc-d" data-pool="onDelete">
+                Delete
+            </button>
+        </td>
     </tr>
 {{/list}}
 </table>
