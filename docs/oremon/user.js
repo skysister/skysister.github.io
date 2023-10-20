@@ -48,7 +48,7 @@ var user = {
     },
 
     select: function (userID) {
-        user.current = user.variables(userID);
+        user.current = userID;
         localStorage.setItem("oremon-user", userID);
         user.found();
     },
