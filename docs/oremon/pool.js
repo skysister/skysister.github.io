@@ -110,6 +110,14 @@ var pool = {
         $("#oremon").html("<hr><p>Pool View<br>Pool ID: " + current + "</p>")
     },
 
+    variables: function (poolID) {
+        return {
+            poolID,
+            entries: pool.read("oremon-pool-" + poolID),
+            ...pool.data.list[poolID]
+        }
+    },
+
     list: function (empty = true) {
         var list = [];
         for (l in pool.data.list) {
