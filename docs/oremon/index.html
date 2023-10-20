@@ -100,6 +100,28 @@
 {{/list}}
 </table>
 </script>
+<script id="pool-view" type="x-tmpl-mustache">
+<hr>
+<h3>
+    {{poolName}}
+    <button class="btn btn-sm btn-ssc-d" data-pool="onList">
+        Close
+    </button>
+</h3>
+<p>{{poolID}}</p>
+<table>
+{{^entries}}
+    <tr>
+        <td>No entries.</td>
+    </tr>
+{{/entries}}
+{{#entries}}
+    <tr>
+        <td>Entry</td>
+    </tr>
+{{/entries}}
+</table>
+</script>
 <script id="select-status" type="x-tmpl-mustache">
 <select name="status">
     <option value="open">Open</option>
