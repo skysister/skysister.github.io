@@ -2,6 +2,7 @@ var pool = {
     init: function () {
         console.log("pool.init()");
         OnClick.install("pool"); // attaches click handlers
+        pool.initForms();
 
         pool.data = pool.read("oremon-pool-data");
         if (pool.data) {
@@ -9,6 +10,10 @@ var pool = {
         } else {
             pool.noData();
         }
+    },
+
+    initForms: function () {
+        $("#oremon").on("submit", "#new-pool-form", pool.onCreate);
     },
 
     add: function (newPool) {
@@ -114,8 +119,10 @@ var pool = {
         oremon.loadTemplate("#pool-list", { list }, empty);
     },
 
-    onCreate: function () {
+    onCreate: function (e) {
         console.log("pool.onCreate()");
+        e.stopPropagation();
+        e.preventDefault();
         pool.add(pool.naieveFormValues("#new-pool-form"));
     },
 
