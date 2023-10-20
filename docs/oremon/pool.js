@@ -82,8 +82,9 @@ var pool = {
 
     noData: function () {
         console.log("pool.noData()");
-        oremon.loadTemplate("#welcome", user.variables(user.current));
-        oremon.loadTemplate("#new-pool", {}, false); // don't empty
+        oremon.empty()
+            .loadTemplate("#welcome", user.variables(user.current))
+            .loadTemplate("#new-pool");
     },
 
     // ----- Found Data -----
@@ -98,13 +99,16 @@ var pool = {
     },
 
     welcomeListNew: function () {
-        oremon.loadTemplate("#welcome", user.variables(user.current));
-        pool.list(false); // don't empty
-        oremon.loadTemplate("#new-pool", {}, false); // don't empty
+        oremon.empty()
+            .loadTemplate("#welcome", user.variables(user.current));
+        pool.list();
+        oremon.loadTemplate("#new-pool");
     },
 
     view: function () {
-        oremon.loadTemplate("#pool-view", pool.variables(pool.data.current));
+        oremon.empty()
+            .loadTemplate("#pool-view", pool.variables(pool.data.current))
+            .loadTemplate("#new-" + which);
     },
 
     variables: function (poolID) {
