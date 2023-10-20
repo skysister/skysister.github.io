@@ -3,12 +3,16 @@ var pool = {
         console.log("pool.init()");
         OnClick.install("pool"); // attaches click handlers
         pool.initForms();
+        pool.initData();
+        
+        pool.render();
+    },
 
+    initData: function () {
         pool.data = pool.read("oremon-pool-data");
-        if (pool.data) {
-            pool.foundData();
-        } else {
-            pool.noData();
+        if (pool.data == null) {
+            pool.data = { list: {}, current: "" };
+            pool.save(pool.data);
         }
     },
 
@@ -54,9 +58,7 @@ var pool = {
     },
 
     saveEntries: function (entries, poolID) {
-        const poolKey = "oremon-pool-" + poolID;
-        pool.save(entries, poolKey);
-        pool.data[poolKey] = entries;
+        pool.save(entries, "oremon-pool-" + poolID);
     },
 
     listVariables: function (l) {
@@ -78,19 +80,7 @@ var pool = {
         return listItem;
     },
 
-    // ----- No Data -----
-
-    noData: function () {
-        console.log("pool.noData()");
-        oremon.empty()
-            .loadTemplate("#welcome", user.variables(user.current))
-            .loadTemplate("#new-pool");
-    },
-
-    // ----- Found Data -----
-
-    foundData: function () {
-        console.log("pool.foundData()");
+    render: function () {
         if (pool.data.current) {
             pool.view();
         } else {
@@ -150,19 +140,19 @@ var pool = {
         pool.save(pool.data);
         localStorage.removeItem("oremon-pool-" + poolID);
 
-        pool.foundData();
+        pool.render();
     },
 
     onView: function () {
         var poolID = $(this).data("poolid");
         console.log("pool.onView()", poolID);
         pool.saveCurrent(poolID);
-        pool.foundData();
+        pool.render();
     },
 
     onList: function () {
         pool.saveCurrent("");
-        pool.foundData();
+        pool.render();
     },
 
     naieveFormValues: function (selector) {
