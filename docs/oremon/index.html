@@ -84,6 +84,11 @@
         <th>Created</th>
         <th>Action</th>
     </tr>
+{{^list}}
+    <tr>
+        <td class="empty-table" colspan="3">No pools. Let’s create one!</td>
+    </tr>
+{{/list}}
 {{#list}}
     <tr data-pool="onView" data-poolid="{{poolID}}">
         <td>{{name}}</td>
@@ -119,7 +124,7 @@
     </tr>
 {{^entries}}
     <tr>
-        <td colspan="6">No entries.</td>
+        <td class="empty-table" colspan="6">No entries in this pool. Got rocks?</td>
     </tr>
 {{/entries}}
 {{#entries}}

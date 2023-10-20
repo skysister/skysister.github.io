@@ -9,3 +9,9 @@
 .user-item:hover, .user-item:active {
     border-color: white;
 }
+
+.table .empty-table {
+    background-color: rgba(255, 127, 0, 0.2);
+    padding: 2em;
+    text-align: center;
+}
