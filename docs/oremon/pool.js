@@ -92,7 +92,7 @@ var pool = {
     foundData: function () {
         console.log("pool.foundData()");
         if (pool.data.current) {
-            pool.view(pool.data.current);
+            pool.view();
         } else {
             pool.welcomeListNew();
         }
