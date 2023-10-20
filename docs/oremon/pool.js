@@ -104,9 +104,6 @@ var pool = {
     },
 
     view: function () {
-        const current = pool.data.current;
-        console.log("pool.view()", current);
-
         oremon.loadTemplate("#pool-view", pool.variables(pool.data.current));
     },
 
