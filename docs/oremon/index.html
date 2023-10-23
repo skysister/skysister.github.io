@@ -62,20 +62,20 @@
 </script>
 <script id="new-pool" type="x-tmpl-mustache">
 <hr>
-<h3>Make a New Pool</h3>
+<h3>{{prompt}}</h3>
 <form id="new-pool-form" class="row">
     <div class="col-auto">
-        <input name="characterName" class="form-control" placeholder="Character Name">
+        <input name="characterName" value="{{characterName}}" class="form-control" placeholder="Character Name">
     </div>
     <div class="col-auto">
-        <input name="poolName" class="form-control" placeholder="Pool Name" required>
+        <input name="poolName" value="{{poolName}}" class="form-control" placeholder="Pool Name" required>
     </div>
     <div class="col-auto">
-        <input name="poolDescription" class="form-control" placeholder="Pool Description">
+        <input name="poolDescription" value="{{poolDescription}}" class="form-control" placeholder="Pool Description">
     </div>
     <div class="col-auto">
         <button class="btn btn-primary btn-ssc-d">
-            Create
+            {{buttonText}}
         </button>
     </div>
 </form>
