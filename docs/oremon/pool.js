@@ -90,10 +90,15 @@ var pool = {
     },
 
     welcomeListNew: function () {
+        var poolVars = {
+            prompt: "Make a New Pool",
+            buttonText: "Create"
+        };
+
         oremon.empty()
             .loadTemplate("#welcome", user.variables(user.current));
         pool.list();
-        oremon.loadTemplate("#new-pool");
+        oremon.loadTemplate("#new-pool", poolVars);
     },
 
     view: function (which = "transaction") {
