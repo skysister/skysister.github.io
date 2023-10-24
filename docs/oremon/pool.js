@@ -92,14 +92,17 @@ var pool = {
     },
 
     welcomeListNew: function () {
+        oremon.empty()
+            .loadTemplate("#welcome", user.variables(user.current));
+        pool.list();
+        pool.newEditor();
+    },
+
+    newEditor: function() {
         var poolVars = {
             prompt: "Make a New Pool",
             buttonText: "Create"
         };
-
-        oremon.empty()
-            .loadTemplate("#welcome", user.variables(user.current));
-        pool.list();
         oremon.loadTemplate("#edit-pool", poolVars);
     },
 
@@ -167,6 +170,18 @@ var pool = {
         setTimeout(function () { pool.recentlySelected = false; }, 400);
         console.log("pool.select()", row);
         row.toggleClass("selected");
+
+        $("#edit-pool-container").remove();
+        if (row.hasClass("selected")) {
+            var poolID = row.data("poolid");
+            var poolVars = pool.variables(poolID);
+            poolVars.prompt = "Edit Selected Pool";
+            poolVars.buttonText = "Save";
+
+            oremon.loadTemplate("#edit-pool", poolVars)
+        } else {
+            pool.newEditor();
+        }
     },
 
     open: function (row) {
