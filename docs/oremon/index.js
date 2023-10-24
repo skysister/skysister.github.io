@@ -50,6 +50,15 @@ var oremon = {
         return oremon;
     },
 
+    naieveFormValues: function (selector) {
+        var result = {};
+        $.each($(selector).serializeArray(), function () {
+            result[this.name] = this.value;
+        });
+
+        return result;
+    },
+    
     randomUUID: function () {
         return crypto.randomUUID();
     }

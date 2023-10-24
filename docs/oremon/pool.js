@@ -1,4 +1,6 @@
 var pool = {
+    recentlySelected: false,
+
     // init is called by user (user.js)
     init: function () {
         console.log("pool.init()");
@@ -18,7 +20,7 @@ var pool = {
     },
 
     initForms: function () {
-        $("#oremon").on("submit", "#new-pool-form", pool.onCreate);
+        $("#oremon").on("submit", "#edit-pool-form", pool.onCreate);
     },
 
     add: function (newPool) {
@@ -98,7 +100,7 @@ var pool = {
         oremon.empty()
             .loadTemplate("#welcome", user.variables(user.current));
         pool.list();
-        oremon.loadTemplate("#new-pool", poolVars);
+        oremon.loadTemplate("#edit-pool", poolVars);
     },
 
     view: function (which = "transaction") {
@@ -136,7 +138,7 @@ var pool = {
         console.log("pool.onCreate()");
         e.stopPropagation();
         e.preventDefault();
-        pool.add(pool.naieveFormValues("#new-pool-form"));
+        pool.add(oremon.naieveFormValues("#edit-pool-form"));
     },
 
     onDelete: function () {
@@ -149,8 +151,26 @@ var pool = {
         pool.render();
     },
 
-    onView: function () {
-        var poolID = $(this).data("poolid");
+    onClickRow: function () {
+        var row = $(this);
+        console.log("pool.onClickRow()", this);
+
+        if (row.hasClass("selected") && pool.recentlySelected) {
+            pool.open(row);
+        } else {
+            pool.select(row);
+        }
+    },
+
+    select: function (row) {
+        pool.recentlySelected = true;
+        setTimeout(function () { pool.recentlySelected = false; }, 400);
+        console.log("pool.select()", row);
+        row.toggleClass("selected");
+    },
+
+    open: function (row) {
+        var poolID = row.data("poolid");
         console.log("pool.onView()", poolID);
         pool.saveCurrent(poolID);
         pool.render();
@@ -159,14 +179,5 @@ var pool = {
     onList: function () {
         pool.saveCurrent("");
         pool.render();
-    },
-
-    naieveFormValues: function (selector) {
-        var result = {};
-        $.each($(selector).serializeArray(), function () {
-            result[this.name] = this.value;
-        });
-
-        return result;
     }
 };

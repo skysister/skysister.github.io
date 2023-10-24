@@ -60,10 +60,10 @@
 <h3>Welcome {{characterName}}</h3>
 <p>Ore Monger is online.</p>
 </script>
-<script id="new-pool" type="x-tmpl-mustache">
+<script id="edit-pool" type="x-tmpl-mustache">
 <hr>
 <h3>{{prompt}}</h3>
-<form id="new-pool-form" class="row">
+<form id="edit-pool-form" class="row">
     <div class="col-auto">
         <input name="characterName" value="{{characterName}}" class="form-control" placeholder="Character Name">
     </div>
@@ -97,7 +97,7 @@
     </tr>
 {{/list}}
 {{#list}}
-    <tr data-pool="onView" data-poolid="{{poolID}}">
+    <tr data-pool="onClickRow" data-poolid="{{poolID}}">
         <td>{{name}}</td>
         <td>{{created}}</td>
         <td>
