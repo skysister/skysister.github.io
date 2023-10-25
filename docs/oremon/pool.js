@@ -20,7 +20,7 @@ var pool = {
     },
 
     initForms: function () {
-        $("#oremon").on("submit", "#edit-pool-form", pool.onCreate);
+        $("#oremon").on("submit", "#edit-pool-form", pool.onEdit);
     },
 
     add: function (newPool) {
@@ -137,8 +137,7 @@ var pool = {
         oremon.loadTemplate("#pool-list", { list });
     },
 
-    onCreate: function (e) {
-        console.log("pool.onCreate()");
+    onEdit: function (e) {
         e.stopPropagation();
         e.preventDefault();
         pool.add(oremon.naieveFormValues("#edit-pool-form"));
