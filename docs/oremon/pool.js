@@ -98,7 +98,7 @@ var pool = {
         pool.newEditor();
     },
 
-    newEditor: function() {
+    newEditor: function () {
         var poolVars = {
             prompt: "Make a New Pool",
             buttonText: "Create"
