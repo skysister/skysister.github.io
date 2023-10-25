@@ -45,6 +45,10 @@ var pool = {
         return poolID;
     },
 
+    update: function (editedPool) {
+        console.log("pool.update()", editedPool);
+    },
+
     saveCurrent: function (poolID) {
         var data = pool.read("oremon-pool-data");
         data.current = poolID;
