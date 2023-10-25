@@ -140,7 +140,14 @@ var pool = {
     onEdit: function (e) {
         e.stopPropagation();
         e.preventDefault();
-        pool.add(oremon.naieveFormValues("#edit-pool-form"));
+
+        const formValues = oremon.naieveFormValues(this);
+
+        if (formValues.poolID) {
+            pool.update(formValues);
+        } else {
+            pool.add(formValues);
+        }
     },
 
     onDelete: function () {
