@@ -64,22 +64,22 @@
 <div id="edit-pool-container">
 <hr>
 <h3>{{prompt}}</h3>
-<form id="edit-pool-form" class="row">
-    <div class="col-auto">
-        <input name="characterName" value="{{characterName}}" class="form-control" placeholder="Character Name">
+<form id="edit-pool-form">
+    <div class="row mb-2">
+        <div class="col-auto">
+            <input name="poolName" value="{{poolName}}" class="form-control" placeholder="Pool Name" required>
+        </div>
+        <div class="col-auto">
+            <input name="poolDescription" value="{{poolDescription}}" class="form-control" placeholder="Pool Description">
+        </div>
+        <div class="col-auto">
+            <input name="characterName" value="{{characterName}}" class="form-control" placeholder="Character Name">
+        </div>
     </div>
-    <div class="col-auto">
-        <input name="poolName" value="{{poolName}}" class="form-control" placeholder="Pool Name" required>
-    </div>
-    <div class="col-auto">
-        <input name="poolDescription" value="{{poolDescription}}" class="form-control" placeholder="Pool Description">
-    </div>
-    <div class="col-auto">
-        <input type="hidden" name="poolID" value="{{poolID}}">
-        <button class="btn btn-primary btn-ssc-d">
-            {{buttonText}}
-        </button>
-    </div>
+    <input type="hidden" name="poolID" value="{{poolID}}">
+    <button class="btn btn-primary btn-ssc-d">
+        {{buttonText}}
+    </button>
 </form>
 </div>
 </script>
