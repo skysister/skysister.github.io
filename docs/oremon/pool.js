@@ -64,8 +64,8 @@ var pool = {
         pool.save(entries, "oremon-pool-" + poolID);
     },
 
-    listVariables: function (l) {
-        var listItem = { poolID: l, ...pool.data.list[l] };
+    listVariables: function (poolID) {
+        var listItem = { ...pool.data.list[l], poolID };
 
         // determine the name
         listItem.name = listItem.poolName;
