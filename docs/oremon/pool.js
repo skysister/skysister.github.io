@@ -124,14 +124,14 @@ var pool = {
     view: function (which = "transaction") {
         oremon.empty()
             .loadTemplate("#pool-view", pool.variables(pool.data.current))
-            .loadTemplate("#new-" + which);
+            .loadTemplate("#edit-" + which);
     },
 
     onNote: function () {
         pool.view("note");
     },
 
-    onEntry: function () {
+    onTransaction: function () {
         pool.view();
     },
 
