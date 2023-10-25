@@ -26,6 +26,7 @@ var pool = {
     add: function (newPool) {
         var data = pool.read("oremon-pool-data");
         const poolID = crypto.randomUUID();
+        delete newPool.poolID;
         newPool.dateTimeCreated = moment().unix();
 
         // if data is falsey, set it to an empty object
