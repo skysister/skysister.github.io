@@ -48,6 +48,16 @@ var pool = {
 
     update: function (editedPool) {
         console.log("pool.update()", editedPool);
+        var data = pool.read("oremon-pool-data");
+        const poolID = editedPool.poolID;
+        delete editedPool.poolID;
+        editedPool.dateTimeCreated = data.list[poolID].dateTimeCreated;
+
+        data.list[poolID] = editedPool;
+        pool.save(data);
+        pool.data = data;
+
+        pool.welcomeListNew();
     },
 
     saveCurrent: function (poolID) {
@@ -167,7 +177,6 @@ var pool = {
 
     onClickRow: function () {
         var row = $(this);
-        console.log("pool.onClickRow()", this);
 
         if (row.hasClass("selected") && pool.recentlySelected) {
             pool.open(row);
@@ -179,7 +188,7 @@ var pool = {
     select: function (row) {
         pool.recentlySelected = true;
         setTimeout(function () { pool.recentlySelected = false; }, 400);
-        console.log("pool.select()", row);
+        row.closest("table").find("tr").not(row).removeClass("selected");
         row.toggleClass("selected");
 
         $("#edit-pool-container").remove();
@@ -193,6 +202,11 @@ var pool = {
         } else {
             pool.newEditor();
         }
+    },
+
+    onOpen: function() {
+        console.log("pool.onOpen()");
+        pool.open($(this).closest("tr"));
     },
 
     open: function (row) {
