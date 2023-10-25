@@ -151,7 +151,7 @@
 {{/entries}}
 </table>
 </script>
-<script id="new-transaction" type="x-tmpl-mustache">
+<script id="edit-transaction" type="x-tmpl-mustache">
 <hr>
 <h3>
     Add Entry
@@ -159,7 +159,7 @@
         Note
     </button>
 </h3>
-<form id="new-transaction-form">
+<form id="edit-transaction-form">
     <div class="row mb-2">
         <div class="col-auto">
             {{>selectEntry}}
@@ -190,7 +190,7 @@
     </div>
 </form>
 </script>
-<script id="new-note" type="x-tmpl-mustache">
+<script id="edit-note" type="x-tmpl-mustache">
 <hr>
 <h3>
     Add Note
@@ -198,7 +198,7 @@
         Entry
     </button>
 </h3>
-<form id="new-note-form" class="row">
+<form id="edit-note-form" class="row">
     <div class="col-auto">
         <input name="text" class="form-control" placeholder="Note">
     </div>
