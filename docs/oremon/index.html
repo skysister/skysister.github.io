@@ -100,12 +100,13 @@
 <table class="table">
     <tr>
         <th>Name</th>
+        <th>Character</th>
         <th>Created</th>
         <th>Action</th>
     </tr>
 {{^list}}
     <tr>
-        <td class="empty-table" colspan="3">
+        <td class="empty-table" colspan="4">
             No pools. Let’s create one!
         </td>
     </tr>
@@ -113,6 +114,7 @@
 {{#list}}
     <tr data-pool="onClickRow" data-poolid="{{poolID}}">
         <td>{{name}}</td>
+        <td>{{characterName}}</td>
         <td>{{created}}</td>
         <td>
             <button class="btn btn-sm btn-ssc-d" data-pool="onOpen">
