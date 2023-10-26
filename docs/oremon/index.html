@@ -175,8 +175,10 @@
 <form id="edit-transaction-form">
     <div class="row mb-2">
         <div class="col-auto">
-            {{>selectEntry}}
-            <input name="entryType" class="form-control" placeholder="Entry Type (select)">
+            <select name="transactionType" class="form-control">
+                <option value="deposit">Deposit</option>
+                <option value="withdrawal">Withdrawal</option>
+            </select>
         </div>
         <div class="col-auto">
             <input name="characterName" class="form-control" placeholder="Character Name">
