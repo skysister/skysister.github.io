@@ -25,4 +25,28 @@
     <script src="/js/material.js"></script>
 </head>
 
+<body>
+    <div id="nav-primary"></div>
+    <div class="page bar-top bar-btm bar-ssc-d">
+        <div class="container">
+            <h1>Fitting Cookbook</h1>
+            <div id="cookbook">
+                <p>Copy the fitting from the Eve client as shown.</p>
+                <div class="col-md-6">
+                    <form id="cookbook-form">
+                        <textarea class="form-control" id="cookbookInput" rows="15" placeholder="...and paste it here."></textarea><br>
+                        <button class="btn btn-primary btn-ssc-d" data-cookbook="onAnalyze">
+                            Calculate Ingredients
+                        </button>
+                        <button class="btn btn-outline btn-ssc-d" data-cookbook="onSampleData">
+                            Sample Fitting
+                        </button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="nav-footer"></div>
+</body>
+
 </html>
