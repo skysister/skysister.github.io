@@ -35,6 +35,14 @@
                 <div class="col-md-6">
                     <form id="cookbook-form">
                         <textarea class="form-control" id="cookbookInput" rows="15" placeholder="...and paste it here."></textarea><br>
+                        <div>
+                            <input type="number" class="form-control form-control-sm w-auto d-inline-block"
+                                title="Desired manufacture quantity"
+                                data-cookbookonchange="calculate"
+                            >
+                            Enter the desired quantity.
+                        </div>
+                        <br>
                         <button class="btn btn-primary btn-ssc-d" data-cookbook="onAnalyze">
                             Calculate Ingredients
                         </button>
