@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sovereignty :: Sky Sister</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/font/opensans/v1.10/fontface.css">
+    <link rel="stylesheet" href="/css/color.css">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/onclick.js"></script>
+    <script src="/js/site.js"></script>
+    <script src="/sov/index.js"></script>
+</head>
+
+<body>
+    <div id="nav-primary"></div>
+    <div class="page bar-top bar-btm bar-ssc-e">
+        <div class="container">
+            <h1>Sovereignty</h1>
+            <p>An ESI utility for generating sovereignty reports. Abuse will cause me to take this utility down.</p>
+            <div id="sov-output" style="display: none;"></div>
+            <pre id="log" class="font-monospace mb-3"></pre>
+            <button class="btn btn-primary btn-ssc-e" data-sov="onRun">
+                Run
+            </button>
+        </div>
+    </div>
+    <div id="nav-footer"></div>
+<script id="sov-report" type="x-tmpl-mustache">
+<table class="table table-ms w-auto text-white">
+    <tr>
+        <th>System</th>
+        <th>Alliance</th>
+        <th>Ticker</th>
+    </tr>
+{{#systems}}
+    <tr>
+        <td>{{system.name}}</td>
+        <td>{{alliance.name}}</td>
+        <td>{{alliance.ticker}}</td>
+    </tr>
+{{/systems}}
+</table>
+</script>
+</body>
+
+</html>
