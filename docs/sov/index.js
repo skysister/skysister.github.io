@@ -14,7 +14,7 @@ var sov = {
 
     getMap: function () {
         sov.log("sov.getMap()");
-        var endpoint = "https://esi.evetech.net/latest/sovereignty/map/?datasource=tranquility";
+        const endpoint = "https://esi.evetech.net/latest/sovereignty/map/?datasource=tranquility";
         sov.log(endpoint);
 
         fetch(endpoint)
@@ -37,14 +37,14 @@ var sov = {
     getNames: function (systemIDs) {
         sov.log("sov.getNames() " + systemIDs.length);
 
-        var endpoint = "https://esi.evetech.net/latest/universe/names/?datasource=tranquility";
+        const endpoint = "https://esi.evetech.net/latest/universe/names/?datasource=tranquility";
 
-        var body = JSON.stringify(systemIDs);
-        var headers = {
+        const body = JSON.stringify(systemIDs);
+        const headers = {
             "accept": "application/json",
             "Content-Type": "application/json",
         };
-        var method = "post";
+        const method = "post";
 
         fetch(endpoint, { body, headers, method })
             .then(response => response.json())
@@ -63,7 +63,7 @@ var sov = {
     },
 
     systemIDs: function () {
-        sov.log("systemIDs()");
+        sov.log("sov.systemIDs()");
         return sov.map.withAlliance.map(system => system.system_id);
     },
 
