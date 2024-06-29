@@ -30,10 +30,15 @@
         <div class="container">
             <h1>Sovereignty</h1>
             <p>An ESI utility for generating sovereignty reports. Abuse will cause me to take this utility down.</p>
+            <p><b>Claimed</b> generates the default report showing systems from the sovereignty map that have an alliance member.</p>
+            <p><b>Contested</b> generates a secondary, shorter report showing systems from the sovereignty campaigns and shows status basics.</p>
             <div id="sov-output" style="display: none;"></div>
-            <pre id="log" class="font-monospace mb-3"></pre>
-            <button class="btn btn-primary btn-ssc-e" data-sov="onRun">
-                Run
+            <pre id="sov-log" class="font-monospace mb-3"></pre>
+            <button class="btn btn-primary btn-ssc-e" data-sov="onClaimed">
+                Claimed
+            </button>
+            <button class="btn btn-primary btn-ssc-e" data-sov="onContested">
+                Contested
             </button>
         </div>
     </div>
