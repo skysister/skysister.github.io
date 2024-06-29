@@ -1,6 +1,6 @@
 var sov = {
     alliance: {},
-    campaign: {},
+    campaign: { names: [] },
     map: { names: [] },
 
     onDocumentReady: function () {
@@ -9,33 +9,48 @@ var sov = {
         sov.log("Ready");
     },
 
-    onContested: function () {
-        $("#sov-log").empty();
-        sov.log("onClaimed()");
-
-        sov.esiCampaigns()
-            .then
-    },
-
     onClaimed: function () {
         $("#sov-log").empty();
         sov.log("onClaimed()");
 
         sov.esiSovMap()
-            .then(() => { sov.metrics(sov.map.original, "original:", "systems"); })
-            .then(sov.filterSystems)
+            .then(() => { sov.metrics(sov.map.esi, "map:", "systems"); })
+            .then(sov.filterMapSystems)
             .then(() => { sov.metrics(sov.map.withAlliance, "withAlliance:", "systems"); })
-            .then(sov.systemNames)
+            .then(sov.getMapSystemNames)
             .then(() => { sov.metrics(sov.map.names, "name:", "systems"); })
-            .then(sov.alliances)
+            .then(sov.getMapAlliances)
             .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
             .then(sov.combineMapData)
             .then(sov.outputClaimed)
     },
 
+    onContested: function () {
+        $("#sov-log").empty();
+        sov.log("onClaimed()");
+
+        sov.esiSovCampaigns()
+            .then(() => { sov.metrics(sov.campaign.esi, "campaign:", "systems"); })
+            .then(sov.getCampaignSystemNames)
+            .then(() => { sov.metrics(sov.campaign.names, "name:", "systems"); })
+            .then(sov.getCampaignAlliances)
+            .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
+            .then(sov.combineCampaignData)
+            .then(sov.outputCampaign)
+    },
+
     metrics: function (theArray, name, items) {
         sov.log(["-", name, theArray.length, items].join(" "));
         return Promise.resolve();
+    },
+
+    esiSovCampaigns: function () {
+        sov.log("esiSovCampaigns()")
+        const endpoint = "https://esi.evetech.net/latest/sovereignty/campaigns/?datasource=tranquility";
+
+        return fetch(endpoint)
+            .then(response => response.json())
+            .then(result => { sov.campaign.esi = result });
     },
 
     esiSovMap: function () {
@@ -44,36 +59,45 @@ var sov = {
 
         return fetch(endpoint)
             .then(response => response.json())
-            .then(result => { sov.map.original = result });
+            .then(result => { sov.map.esi = result });
     },
 
-    filterSystems: function () {
-        sov.log("filterSystems()");
-        sov.map.withAlliance = sov.map.original.filter(
+    filterMapSystems: function () {
+        sov.log("filterMapSystems()");
+        sov.map.withAlliance = sov.map.esi.filter(
             s => Object.keys(s).includes("alliance_id")
         );
         return Promise.resolve();
     },
 
-    systemNames: function () {
-        sov.log("systemNames()");
+    getMapSystemNames: function () {
+        sov.log("getMapSystemNames()");
+        return sov.getSystemNamesByChunk(sov.systemIDs(sov.map.withAlliance), "map");
+    },
+
+    getCampaignSystemNames: function () {
+        sov.log("getCampaignSystemNames()");
+        return sov.getSystemNamesByChunk(sov.systemIDs(sov.campaign.esi, "solar_system_id"), "campaign");
+    },
+
+    systemIDs: function (systems, member = "system_id") {
+        sov.log("systemIDs()");
+        return systems.map(system => system[member]);
+    },
+
+    getSystemNamesByChunk: function (systemIDs, dest) {
+        sov.log("getSystemNamesByChunk()");
         // get system names 1,000 at a time
-        const systemIDs = sov.systemIDs();
         const chunkSize = 1000;
         const requests = [];
         for (i = 0; i < systemIDs.length; i += chunkSize) {
             const chunk = systemIDs.slice(i, i + chunkSize);
-            requests.push(sov.esiUniverseNames(chunk));
+            requests.push(sov.esiUniverseNames(chunk, dest));
         }
         return Promise.all(requests);
     },
 
-    systemIDs: function () {
-        sov.log("systemIDs()");
-        return sov.map.withAlliance.map(system => system.system_id);
-    },
-
-    esiUniverseNames: function (systemIDs) {
+    esiUniverseNames: function (systemIDs, dest) {
         sov.log("esiUniverseNames() " + systemIDs.length);
 
         const endpoint = "https://esi.evetech.net/latest/universe/names/?datasource=tranquility";
@@ -89,18 +113,37 @@ var sov = {
             .then(response => response.json())
             .then(result => {
                 sov.log("Received " + result.length + " names.");
-                sov.map.names.push(...result);
+                sov[dest].names.push(...result);
             });
     },
 
-    alliances: function () {
-        sov.log("alliances()");
+    getMapAlliances: function () {
+        sov.log("getMapAlliances()");
 
         // deduplicate the alliances for non-redundant lookup
         sov.map.withAlliance.forEach(system => {
+            // TODO check for existance first
             sov.alliance[system.alliance_id] = {};
         });
 
+        // TODO send list of empty objects
+        const requests = [];
+        Object.keys(sov.alliance).forEach(alliance_id => {
+            requests.push(sov.esiAlliance(alliance_id));
+        });
+        return Promise.all(requests);
+    },
+
+    getCampaignAlliances: function () {
+        sov.log("getMapAlliances()");
+
+        // deduplicate the alliances for non-redundant lookup
+        sov.campaign.esi.forEach(system => {
+            // TODO check for existance first
+            sov.alliance[system.defender_id] = {};
+        });
+
+        // TODO send list of empty objects
         const requests = [];
         Object.keys(sov.alliance).forEach(alliance_id => {
             requests.push(sov.esiAlliance(alliance_id));
@@ -127,11 +170,31 @@ var sov = {
         return Promise.resolve();
     },
 
+    combineCampaignData: function () {
+        sov.log("sov.combineCampaignData()");
+
+        sov.campaign.esi.forEach((system, s) => {
+            sov.campaign.esi[s].alliance = sov.alliance[system.defender_id];
+            sov.campaign.esi[s].system = sov.campaign.names.filter(n => n.id == system.solar_system_id)[0];
+        });
+
+        return Promise.resolve();
+    },
+
     outputClaimed: function () {
         sov.log("outputClaimed()");
         $("#sov-output").empty()
             .append(Mustache.render(
-                $("#sov-report").html(), { systems: sov.map.withAlliance }
+                $("#sov-claimed").html(), { systems: sov.map.withAlliance }
+            ))
+            .show();
+    },
+
+    outputCampaign: function () {
+        sov.log("outputCampaign()");
+        $("#sov-output").empty()
+            .append(Mustache.render(
+                $("#sov-campaign").html(), { systems: sov.campaign.esi }
             ))
             .show();
     },

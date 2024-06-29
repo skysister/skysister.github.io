@@ -43,10 +43,10 @@
         </div>
     </div>
     <div id="nav-footer"></div>
-<script id="sov-report" type="x-tmpl-mustache">
+<script id="sov-claimed" type="x-tmpl-mustache">
 <table class="table table-ms w-auto text-white">
     <tr>
-        <th>System</th>
+        <th>Claimed</th>
         <th>Alliance</th>
         <th>Ticker</th>
     </tr>
@@ -55,6 +55,30 @@
         <td>{{system.name}}</td>
         <td>{{alliance.name}}</td>
         <td>{{alliance.ticker}}</td>
+    </tr>
+{{/systems}}
+</table>
+</script>
+<script id="sov-campaign" type="x-tmpl-mustache">
+<table class="table table-ms w-auto text-white">
+    <tr>
+        <th>Contested</th>
+        <th>Event</th>
+        <th>Start</th>
+        <th>Attackers Score</th>
+        <th>Defender</th>
+        <th>Ticker</th>
+        <th>Defender Score</th>
+    </tr>
+{{#systems}}
+    <tr>
+        <td>{{system.name}}</td>
+        <td>{{event_type}}</td>
+        <td></td>
+        <td class="text-center">{{attackers_score}}</td>
+        <td>{{alliance.name}}</td>
+        <td>{{alliance.ticker}}</td>
+        <td class="text-center">{{defender_score}}</td>
     </tr>
 {{/systems}}
 </table>
