@@ -19,6 +19,7 @@ var sov = {
             .then(sov.alliances)
             .then(() => { sov.metrics(Object.keys(sov.map.alliance), "alliance:", "alliances"); })
             .then(sov.combineMapData)
+            .then(sov.output)
     },
 
     metrics: function (theArray, name, items) {
