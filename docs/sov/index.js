@@ -1,5 +1,7 @@
 var sov = {
-    map: { names: [], alliance: {} },
+    alliance: {},
+    campaign: {},
+    map: { names: [] },
 
     onDocumentReady: function () {
         console.log("sov.onDocumentReady()");
@@ -7,8 +9,17 @@ var sov = {
         sov.log("Ready");
     },
 
-    onRun: function () {
-        sov.log("onRun()");
+    onContested: function () {
+        $("#sov-log").empty();
+        sov.log("onClaimed()");
+
+        sov.esiCampaigns()
+            .then
+    },
+
+    onClaimed: function () {
+        $("#sov-log").empty();
+        sov.log("onClaimed()");
 
         sov.esiSovMap()
             .then(() => { sov.metrics(sov.map.original, "original:", "systems"); })
@@ -17,9 +28,9 @@ var sov = {
             .then(sov.systemNames)
             .then(() => { sov.metrics(sov.map.names, "name:", "systems"); })
             .then(sov.alliances)
-            .then(() => { sov.metrics(Object.keys(sov.map.alliance), "alliance:", "alliances"); })
+            .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
             .then(sov.combineMapData)
-            .then(sov.output)
+            .then(sov.outputClaimed)
     },
 
     metrics: function (theArray, name, items) {
@@ -87,11 +98,11 @@ var sov = {
 
         // deduplicate the alliances for non-redundant lookup
         sov.map.withAlliance.forEach(system => {
-            sov.map.alliance[system.alliance_id] = {};
+            sov.alliance[system.alliance_id] = {};
         });
 
         const requests = [];
-        Object.keys(sov.map.alliance).forEach(alliance_id => {
+        Object.keys(sov.alliance).forEach(alliance_id => {
             requests.push(sov.esiAlliance(alliance_id));
         });
         return Promise.all(requests);
@@ -102,22 +113,22 @@ var sov = {
 
         return fetch(endpoint)
             .then(response => response.json())
-            .then(result => { sov.map.alliance[alliance_id] = result; });
+            .then(result => { sov.alliance[alliance_id] = result; });
     },
 
     combineMapData: function () {
         sov.log("sov.combineMapData()");
 
         sov.map.withAlliance.forEach((system, s) => {
-            sov.map.withAlliance[s].alliance = sov.map.alliance[system.alliance_id];
+            sov.map.withAlliance[s].alliance = sov.alliance[system.alliance_id];
             sov.map.withAlliance[s].system = sov.map.names.filter(n => n.id == system.system_id)[0];
         });
 
         return Promise.resolve();
     },
 
-    output: function () {
-        sov.log("output()");
+    outputClaimed: function () {
+        sov.log("outputClaimed()");
         $("#sov-output").empty()
             .append(Mustache.render(
                 $("#sov-report").html(), { systems: sov.map.withAlliance }
@@ -126,7 +137,7 @@ var sov = {
     },
 
     log: function (message) {
-        $("#log").append(message + "\n");
+        $("#sov-log").append(message + "\n");
     }
 };
 
