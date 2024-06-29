@@ -107,9 +107,12 @@ var sov = {
     combineMapData: function () {
         sov.log("sov.combineMapData()");
 
-        sov.map.withAlliance.forEach(system => {
-            console.log(system);
+        sov.map.withAlliance.forEach((system, s) => {
+            sov.map.withAlliance[s].alliance = sov.map.alliance[system.alliance_id];
+            sov.map.withAlliance[s].system = sov.map.names.filter(n => n.id == system.system_id)[0];
         });
+
+        return Promise.resolve();
     },
 
     output: function () {
