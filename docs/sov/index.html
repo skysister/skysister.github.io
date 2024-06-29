@@ -36,6 +36,22 @@
         </div>
     </div>
     <div id="nav-footer"></div>
+<script id="sov-report" type="x-tmpl-mustache">
+<table class="table table-ms w-auto text-white">
+    <tr>
+        <th>System</th>
+        <th>Alliance</th>
+        <th>Ticker</th>
+    </tr>
+{{#systems}}
+    <tr>
+        <td>{{system.name}}</td>
+        <td>{{alliance.name}}</td>
+        <td>{{alliance.ticker}}</td>
+    </tr>
+{{/systems}}
+</table>
+</script>
 </body>
 
 </html>
