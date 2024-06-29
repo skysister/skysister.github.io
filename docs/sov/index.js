@@ -26,11 +26,15 @@ var sov = {
                 // sov.getNames(sov.systemIDs());
                 const systemIDs = sov.systemIDs();
                 const maxEntries = 1000;
+                const requests = [];
                 for (i = 0; i < systemIDs.length; i += maxEntries) {
                     const maxSystemIDs = systemIDs.slice(i, i + maxEntries);
-                    sov.getNames(maxSystemIDs);
+                    requests.push(sov.getNames(maxSystemIDs));
                 }
-                sov.log("Names has " + sov.map.names.length + " systems.");
+                Promise.all(requests)
+                    .then(() => {
+                        sov.log("Names has " + sov.map.names.length + " systems.");
+                    });
             });
     },
 
