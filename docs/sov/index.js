@@ -46,7 +46,7 @@ var sov = {
         };
         const method = "post";
 
-        fetch(endpoint, { body, headers, method })
+        return fetch(endpoint, { body, headers, method })
             .then(response => response.json())
             .then(result => {
                 sov.log("Received " + result.length + " names.");
