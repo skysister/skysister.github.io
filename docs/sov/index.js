@@ -56,10 +56,6 @@ var sov = {
         return Promise.all(requests);
     },
 
-    /**
-     * systemIDs
-     * returns an array for getting system names
-     */
     systemIDs: function () {
         sov.log("systemIDs()");
         return sov.map.withAlliance.map(system => system.system_id);
@@ -108,10 +104,6 @@ var sov = {
             .then(result => { sov.map.alliance[alliance_id] = result; });
     },
 
-    /**
-     * combineMapData
-     * assigns systems and alliances to sov.map.withAlliance
-     */
     combineMapData: function () {
         sov.log("sov.combineMapData()");
 
