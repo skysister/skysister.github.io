@@ -120,6 +120,15 @@ var sov = {
         });
     },
 
+    output: function () {
+        sov.log("output()");
+        $("#sov-output").empty()
+            .append(Mustache.render(
+                $("#sov-report").html(), { systems: sov.map.withAlliance }
+            ))
+            .show();
+    },
+
     log: function (message) {
         $("#log").append(message + "\n");
     }
