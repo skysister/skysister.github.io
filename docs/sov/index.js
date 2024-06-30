@@ -193,7 +193,7 @@ var sov = {
             const eventTimeEve = moment(eventTimeLocal).utc();
             sov.campaign.esi[s].time = {
                 eve: eventTimeEve.format('MMM D, YYYY HH:mm'),
-                local: eventTimeLocal.format('MMM D, YYYY h:mm a'),
+                local: eventTimeLocal.format('lll'),
             };
         })
     },
