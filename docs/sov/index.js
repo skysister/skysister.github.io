@@ -36,7 +36,13 @@ var sov = {
             .then(sov.getCampaignAlliances)
             .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
             .then(sov.combineCampaignData)
+            .then(sov.convertCampaignDateTimes)
             .then(sov.outputCampaign)
+    },
+
+    onSwapTime: function() {
+        console.log("sov.onSwapTime");
+        $(".time").toggle();
     },
 
     metrics: function (theArray, name, items) {
@@ -179,6 +185,17 @@ var sov = {
         });
 
         return Promise.resolve();
+    },
+
+    convertCampaignDateTimes: function() {
+        sov.campaign.esi.forEach((system, s) => {
+            const eventTimeLocal = moment(system.start_time);
+            const eventTimeEve = moment(eventTimeLocal).utc();
+            sov.campaign.esi[s].time = {
+                eve: eventTimeEve.format('MMM D, YYYY HH:mm'),
+                local: eventTimeLocal.format('MMM D, YYYY h:mm a'),
+            };
+        })
     },
 
     outputClaimed: function () {
