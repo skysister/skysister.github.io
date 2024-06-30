@@ -64,7 +64,10 @@
     <tr>
         <th>Contested</th>
         <th>Event</th>
-        <th>Start</th>
+        <th data-sov="onSwapTime">
+            <span class="time time-eve">Start (Eve Time)</span>
+            <span class="time time-local" style="display: none;">Start (Your Local Time)</span>
+        </th>
         <th>Attackers Score</th>
         <th>Defender</th>
         <th>Ticker</th>
@@ -74,7 +77,10 @@
     <tr>
         <td>{{system.name}}</td>
         <td>{{event_type}}</td>
-        <td></td>
+        <td data-sov="onSwapTime">
+            <span class="time time-eve">{{time.eve}}</span>
+            <span class="time time-local" style="display: none;">{{time.local}}</span>
+        </td>
         <td class="text-center">{{attackers_score}}</td>
         <td>{{alliance.name}}</td>
         <td>{{alliance.ticker}}</td>
