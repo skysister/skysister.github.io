@@ -1,7 +1,8 @@
 var sov = {
     alliance: {},
-    contested: { names: [] },
-    claimed: { names: [] },
+    claimed: {},
+    contested: {},
+    systemNames: [],
 
     onDocumentReady: function () {
         console.log("sov.onDocumentReady()");
@@ -18,7 +19,7 @@ var sov = {
             .then(sov.filterClaimedSystems)
             .then(() => { sov.metrics(sov.claimed.output, "with alliance:", "systems"); })
             .then(sov.getClaimedSystemNames)
-            .then(() => { sov.metrics(sov.claimed.names, "name:", "systems"); })
+            .then(() => { sov.metrics(sov.systemNames, "name:", "systems"); })
             .then(sov.getClaimedAlliances)
             .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
             .then(sov.combineClaimedData)
@@ -32,7 +33,7 @@ var sov = {
         sov.esiSovCampaigns()
             .then(() => { sov.metrics(sov.contested.output, "contested:", "systems"); })
             .then(sov.getContestedSystemNames)
-            .then(() => { sov.metrics(sov.contested.names, "name:", "systems"); })
+            .then(() => { sov.metrics(sov.systemNames, "name:", "systems"); })
             .then(sov.getContestedAlliances)
             .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
             .then(sov.combineContestedData)
@@ -40,7 +41,7 @@ var sov = {
             .then(sov.outputContested)
     },
 
-    onSwapTime: function() {
+    onSwapTime: function () {
         console.log("sov.onSwapTime");
         $(".time").toggle();
     },
@@ -106,7 +107,7 @@ var sov = {
         return Promise.all(requests);
     },
 
-    esiUniverseNames: function (systemIDs, dest) {
+    esiUniverseNames: function (systemIDs) {
         sov.log("esiUniverseNames() " + systemIDs.length);
 
         const endpoint = "https://esi.evetech.net/latest/universe/names/?datasource=tranquility";
@@ -122,7 +123,7 @@ var sov = {
             .then(response => response.json())
             .then(result => {
                 sov.log("Received " + result.length + " names.");
-                sov[dest].names.push(...result);
+                sov.systemNames.push(...result);
             });
     },
 
@@ -173,7 +174,7 @@ var sov = {
 
         sov.claimed.output.forEach((system, s) => {
             sov.claimed.output[s].alliance = sov.alliance[system.alliance_id];
-            sov.claimed.output[s].system = sov.claimed.names.filter(n => n.id == system.system_id)[0];
+            sov.claimed.output[s].system = sov.systemNames.filter(n => n.id == system.system_id)[0];
         });
 
         return Promise.resolve();
@@ -184,13 +185,13 @@ var sov = {
 
         sov.contested.output.forEach((system, s) => {
             sov.contested.output[s].alliance = sov.alliance[system.defender_id];
-            sov.contested.output[s].system = sov.contested.names.filter(n => n.id == system.solar_system_id)[0];
+            sov.contested.output[s].system = sov.systemNames.filter(n => n.id == system.solar_system_id)[0];
         });
 
         return Promise.resolve();
     },
 
-    convertContestedDateTimes: function() {
+    convertContestedDateTimes: function () {
         sov.contested.output.forEach((system, s) => {
             const eventTimeLocal = moment(system.start_time);
             const eventTimeEve = moment(eventTimeLocal).utc();
