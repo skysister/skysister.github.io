@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="/js/nav.js"></script>
     <script src="/js/onclick.js"></script>
     <script src="/js/site.js"></script>
@@ -33,7 +34,9 @@
             <p><b>Claimed</b> generates the default report showing systems from the sovereignty map that have an alliance member.</p>
             <p><b>Contested</b> generates a secondary, shorter report showing systems from the sovereignty campaigns and shows status basics.</p>
             <div id="sov-btnbar" style="display: none;">
-                <button class="btn btn-outline btn-ssc-e">Copy Table as CSV</button>
+                <button class="btn btn-outline btn-ssc-e" data-sov="onCopy">
+                    Copy Table as CSV
+                </button>
             </div>
             <div id="sov-output" style="display: none;"></div>
             <pre id="sov-log" class="font-monospace mb-3"></pre>
