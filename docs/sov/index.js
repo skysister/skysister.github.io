@@ -1,6 +1,6 @@
 var sov = {
     alliance: {},
-    campaign: { names: [] },
+    contested: { names: [] },
     claimed: { names: [] },
 
     onDocumentReady: function () {
@@ -30,14 +30,14 @@ var sov = {
         sov.log("onClaimed()");
 
         sov.esiSovCampaigns()
-            .then(() => { sov.metrics(sov.campaign.esi, "campaign:", "systems"); })
-            .then(sov.getCampaignSystemNames)
-            .then(() => { sov.metrics(sov.campaign.names, "name:", "systems"); })
-            .then(sov.getCampaignAlliances)
+            .then(() => { sov.metrics(sov.contested.output, "contested:", "systems"); })
+            .then(sov.getContestedSystemNames)
+            .then(() => { sov.metrics(sov.contested.names, "name:", "systems"); })
+            .then(sov.getContestedAlliances)
             .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
-            .then(sov.combineCampaignData)
-            .then(sov.convertCampaignDateTimes)
-            .then(sov.outputCampaign)
+            .then(sov.combineContestedData)
+            .then(sov.convertContestedDateTimes)
+            .then(sov.outputContested)
     },
 
     onSwapTime: function() {
@@ -56,7 +56,10 @@ var sov = {
 
         return fetch(endpoint)
             .then(response => response.json())
-            .then(result => { sov.campaign.esi = result });
+            .then(result => {
+                sov.contested.esi = result;
+                sov.contested.output = result;
+            });
     },
 
     esiSovMap: function () {
@@ -81,9 +84,9 @@ var sov = {
         return sov.getSystemNamesByChunk(sov.systemIDs(sov.claimed.output), "claimed");
     },
 
-    getCampaignSystemNames: function () {
-        sov.log("getCampaignSystemNames()");
-        return sov.getSystemNamesByChunk(sov.systemIDs(sov.campaign.esi, "solar_system_id"), "campaign");
+    getContestedSystemNames: function () {
+        sov.log("getContestedSystemNames()");
+        return sov.getSystemNamesByChunk(sov.systemIDs(sov.contested.output, "solar_system_id"), "contested");
     },
 
     systemIDs: function (systems, member = "system_id") {
@@ -140,11 +143,11 @@ var sov = {
         return Promise.all(requests);
     },
 
-    getCampaignAlliances: function () {
-        sov.log("getMapAlliances()");
+    getContestedAlliances: function () {
+        sov.log("getContestedAlliances()");
 
         // deduplicate the alliances for non-redundant lookup
-        sov.campaign.esi.forEach(system => {
+        sov.contested.output.forEach(system => {
             // TODO check for existance first
             sov.alliance[system.defender_id] = {};
         });
@@ -176,22 +179,22 @@ var sov = {
         return Promise.resolve();
     },
 
-    combineCampaignData: function () {
-        sov.log("sov.combineCampaignData()");
+    combineContestedData: function () {
+        sov.log("sov.combineContestedData()");
 
-        sov.campaign.esi.forEach((system, s) => {
-            sov.campaign.esi[s].alliance = sov.alliance[system.defender_id];
-            sov.campaign.esi[s].system = sov.campaign.names.filter(n => n.id == system.solar_system_id)[0];
+        sov.contested.output.forEach((system, s) => {
+            sov.contested.output[s].alliance = sov.alliance[system.defender_id];
+            sov.contested.output[s].system = sov.contested.names.filter(n => n.id == system.solar_system_id)[0];
         });
 
         return Promise.resolve();
     },
 
-    convertCampaignDateTimes: function() {
-        sov.campaign.esi.forEach((system, s) => {
+    convertContestedDateTimes: function() {
+        sov.contested.output.forEach((system, s) => {
             const eventTimeLocal = moment(system.start_time);
             const eventTimeEve = moment(eventTimeLocal).utc();
-            sov.campaign.esi[s].time = {
+            sov.contested.output[s].time = {
                 eve: eventTimeEve.format('MMM D, YYYY HH:mm'),
                 local: eventTimeLocal.format('lll'),
             };
@@ -207,11 +210,11 @@ var sov = {
             .show();
     },
 
-    outputCampaign: function () {
-        sov.log("outputCampaign()");
+    outputContested: function () {
+        sov.log("outputContested()");
         $("#sov-output").empty()
             .append(Mustache.render(
-                $("#sov-campaign").html(), { systems: sov.campaign.esi }
+                $("#sov-contested").html(), { systems: sov.contested.output }
             ))
             .show();
     },
