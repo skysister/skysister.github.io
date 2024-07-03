@@ -1,7 +1,7 @@
 var sov = {
     alliance: {},
     campaign: { names: [] },
-    map: { names: [] },
+    claimed: { names: [] },
 
     onDocumentReady: function () {
         console.log("sov.onDocumentReady()");
@@ -14,14 +14,14 @@ var sov = {
         sov.log("onClaimed()");
 
         sov.esiSovMap()
-            .then(() => { sov.metrics(sov.map.esi, "map:", "systems"); })
-            .then(sov.filterMapSystems)
-            .then(() => { sov.metrics(sov.map.withAlliance, "withAlliance:", "systems"); })
-            .then(sov.getMapSystemNames)
-            .then(() => { sov.metrics(sov.map.names, "name:", "systems"); })
-            .then(sov.getMapAlliances)
+            .then(() => { sov.metrics(sov.claimed.esi, "from ESI:", "systems"); })
+            .then(sov.filterClaimedSystems)
+            .then(() => { sov.metrics(sov.claimed.output, "with alliance:", "systems"); })
+            .then(sov.getClaimedSystemNames)
+            .then(() => { sov.metrics(sov.claimed.names, "name:", "systems"); })
+            .then(sov.getClaimedAlliances)
             .then(() => { sov.metrics(Object.keys(sov.alliance), "alliance:", "alliances"); })
-            .then(sov.combineMapData)
+            .then(sov.combineClaimedData)
             .then(sov.outputClaimed)
     },
 
@@ -65,20 +65,20 @@ var sov = {
 
         return fetch(endpoint)
             .then(response => response.json())
-            .then(result => { sov.map.esi = result });
+            .then(result => { sov.claimed.esi = result });
     },
 
-    filterMapSystems: function () {
-        sov.log("filterMapSystems()");
-        sov.map.withAlliance = sov.map.esi.filter(
+    filterClaimedSystems: function () {
+        sov.log("filterClaimedSystems()");
+        sov.claimed.output = sov.claimed.esi.filter(
             s => Object.keys(s).includes("alliance_id")
         );
         return Promise.resolve();
     },
 
-    getMapSystemNames: function () {
-        sov.log("getMapSystemNames()");
-        return sov.getSystemNamesByChunk(sov.systemIDs(sov.map.withAlliance), "map");
+    getClaimedSystemNames: function () {
+        sov.log("getClaimedSystemNames()");
+        return sov.getSystemNamesByChunk(sov.systemIDs(sov.claimed.output), "claimed");
     },
 
     getCampaignSystemNames: function () {
@@ -123,11 +123,11 @@ var sov = {
             });
     },
 
-    getMapAlliances: function () {
-        sov.log("getMapAlliances()");
+    getClaimedAlliances: function () {
+        sov.log("getClaimedAlliances()");
 
         // deduplicate the alliances for non-redundant lookup
-        sov.map.withAlliance.forEach(system => {
+        sov.claimed.output.forEach(system => {
             // TODO check for existance first
             sov.alliance[system.alliance_id] = {};
         });
@@ -165,12 +165,12 @@ var sov = {
             .then(result => { sov.alliance[alliance_id] = result; });
     },
 
-    combineMapData: function () {
-        sov.log("sov.combineMapData()");
+    combineClaimedData: function () {
+        sov.log("sov.combineClaimedData()");
 
-        sov.map.withAlliance.forEach((system, s) => {
-            sov.map.withAlliance[s].alliance = sov.alliance[system.alliance_id];
-            sov.map.withAlliance[s].system = sov.map.names.filter(n => n.id == system.system_id)[0];
+        sov.claimed.output.forEach((system, s) => {
+            sov.claimed.output[s].alliance = sov.alliance[system.alliance_id];
+            sov.claimed.output[s].system = sov.claimed.names.filter(n => n.id == system.system_id)[0];
         });
 
         return Promise.resolve();
@@ -202,7 +202,7 @@ var sov = {
         sov.log("outputClaimed()");
         $("#sov-output").empty()
             .append(Mustache.render(
-                $("#sov-claimed").html(), { systems: sov.map.withAlliance }
+                $("#sov-claimed").html(), { systems: sov.claimed.output }
             ))
             .show();
     },
