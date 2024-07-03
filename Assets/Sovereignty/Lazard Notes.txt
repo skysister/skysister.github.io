@@ -1,0 +1,11 @@
+This started with the spreadsheet that had all the new Equinox resources available per system. First thing that caught my attention is how the mining upgrades require the largest amount of power.
+Then I did a quick analysis and determined that just over half of all null sov systems are even capable of onlining such a module.
+So it's not a death knell for high sec mining like I thought it might be, but I cannot ever stop myself from going deeper.
+What this is going to become: there will be small knots of interdependent systems.
+High power systems will probably go to industry folks for the mining stuff, the new fuels and workforce will then be moved arouund the other systems as needed.
+So what alliances are going to look like going forward are a collection of these little knots.
+If I can determine who owns what systems, where they connect and what sort of activities the sov holders are into, I can drill in to see which groups are doing alright and which ones are going to have to expand.
+Which, for pirates, is kind like being a flock of seagulls with a marine traffic scanner.
+We know where the conflicts are going to be for third partying, and can share the information with any friends in sov null space so they know who is likely to attack them, and who is going to need allies to go against larger groups for like two or three systems so they can start making diplomatic overtures.
+This is a huge amount of data to parse, and as I've been studying Python and its machine learning applications, this could be a good little capstone project for me.
+Furthermore, I can use Maru's thing as a data source in addition to that spreadsheet from CCP as well as any other information we need and then plug it into a PowerBI dashboard; something else I'm learning to become a better and more hireable business analyst.
