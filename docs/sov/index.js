@@ -3,6 +3,8 @@ var sov = {
     claimed: {},
     contested: {},
     systemNames: [],
+    visibleReport: null,
+    csvSource: [],
 
     onDocumentReady: function () {
         console.log("sov.onDocumentReady()");
@@ -39,6 +41,40 @@ var sov = {
             .then(sov.combineContestedData)
             .then(sov.convertContestedDateTimes)
             .then(sov.outputContested)
+    },
+
+    onCopy: function() {
+        console.log("sov.onCopy():", sov.visibleReport);
+
+        if (sov.visibleReport == "claimed") {
+            console.log("Copy claimed to CSV.");
+            sov.csvSource = [];
+            sov.claimed.output.map(row => {
+                sov.csvSource.push({
+                    claimed: row.system.name,
+                    alliance: row.alliance.name,
+                    ticker: row.alliance.ticker,
+                });
+            });
+        }
+
+        if (sov.visibleReport == "contested") {
+            console.log("Copy contested to CSV.");
+            sov.csvSource = [];
+            sov.contested.output.map(row => {
+                sov.csvSource.push({
+                    contested: row.system.name,
+                    event: row.event_type,
+                    startUTC: row.time.eve,
+                    attackersScore: row.attakers_score,
+                    alliance: row.alliance.name,
+                    ticker: row.alliance.ticker,
+                    defenderScore: row.defender_score,
+                });
+            });
+        }
+
+        site.copyToClipboard(Papa.unparse(sov.csvSource));
     },
 
     onSwapTime: function () {
@@ -209,6 +245,8 @@ var sov = {
                 $("#sov-claimed").html(), { systems: sov.claimed.output }
             ))
             .show();
+        sov.visibleReport = "claimed";
+        $("#sov-btnbar").show();
     },
 
     outputContested: function () {
@@ -218,6 +256,8 @@ var sov = {
                 $("#sov-contested").html(), { systems: sov.contested.output }
             ))
             .show();
+        sov.visibleReport = "contested";
+        $("#sov-btnbar").show();
     },
 
     log: function (message) {
