@@ -66,7 +66,7 @@ var sov = {
                     contested: row.system.name,
                     event: row.event_type,
                     startUTC: row.time.eve,
-                    attackersScore: row.attakers_score,
+                    attackersScore: row.attackers_score,
                     alliance: row.alliance.name,
                     ticker: row.alliance.ticker,
                     defenderScore: row.defender_score,
